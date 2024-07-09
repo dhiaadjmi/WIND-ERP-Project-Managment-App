@@ -1,0 +1,16 @@
+
+spring:
+  application:
+    name: authentication
+  config:
+    import: configserver:http://localhost:8888
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: windconsultingagile2024@gmail.com
+    password: kheq fdxn pcnx qgtp
+
+
+
+upload:
+  directory: "micro-services-windErp/authentication/src/main/resources/images"

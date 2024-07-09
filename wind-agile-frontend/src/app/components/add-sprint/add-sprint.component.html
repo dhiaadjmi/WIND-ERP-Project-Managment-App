@@ -1,0 +1,66 @@
+<mat-card class="add-sprint-card">
+  <button mat-icon-button class="close-button" aria-label="Fermer" (click)="closeDialog()">
+    <mat-icon>close</mat-icon>
+  </button><br>
+
+  <mat-card-title class="add-sprint-title">Ajouter un nouveau Sprint</mat-card-title>
+
+
+  <mat-card-content>
+    <form class="m-t-30 form-row" #addSprintForm="ngForm">
+
+      <div class="form-column">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Nom</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <input matInput name="name" [(ngModel)]="newSprint.name" placeholder="Nom" required />
+        </mat-form-field>
+      </div>
+
+      <div class="form-column">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Objectif</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <textarea matInput name="objectif" [(ngModel)]="newSprint.objectif" placeholder="Objectif" required></textarea>
+        </mat-form-field>
+      </div>
+
+      <div class="form-column">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Date de création</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <input matInput [matDatepicker]="startDatePicker" name="startDate" [(ngModel)]="newSprint.createdDate" placeholder="Date de début" required />
+          <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #startDatePicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="form-column">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Date de fin</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <input matInput [matDatepicker]="endDatePicker" name="endDate" [(ngModel)]="newSprint.endDate" placeholder="Date de fin" required />
+          <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #endDatePicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="form-column">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">État</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <mat-select [(ngModel)]="newSprint.state" name="state" required>
+            <mat-option value="IN_PROGRESS" [ngStyle]="{'background-color': '#86B6F6'}">En cours</mat-option>
+            <mat-option value="ON_HOLD" [ngStyle]="{'background-color': '#facc15'}">En attente</mat-option>
+            <mat-option value="COMPLETED" [ngStyle]="{'background-color': '#A1EEBD'}">Terminé</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+
+
+      <div class="form-column">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Priorité</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <input matInput type="number" name="priority" [(ngModel)]="newSprint.priority" placeholder="Priorité" required />
+        </mat-form-field>
+      </div>
+
+      <button mat-flat-button color="primary" class="w-100" (click)="addSprint()">Ajouter Sprint</button>
+    </form>
+  </mat-card-content>
+</mat-card>

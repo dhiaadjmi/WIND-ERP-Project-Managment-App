@@ -1,0 +1,182 @@
+.teams-container {
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 16px;
+}
+.button-add-project{
+  align-items: center;
+  text-align: center;
+}
+.project-header {
+  display: flex;
+  flex-direction: column;
+}
+.team-name {
+  display: inline-block;
+  font-weight: bold;
+  padding-bottom: 20px;
+  padding-top: 0px;
+  color: #facc15;
+}
+
+.project-description {
+  display: block;
+}
+
+
+mat-card-title {
+  color: #00095E;
+  margin-bottom: 16px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+.project-card {
+  margin: 16px;
+  width: calc(30% - 32px);
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card mat-card-content {
+  padding: 16px;
+}
+
+.project-details {
+  margin-top: 8px;
+}
+
+.project-card-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.project-icons {
+  margin-top: 8px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.action-icon {
+  cursor: pointer;
+  margin-left: 8px;
+  color: #facc15;
+}
+.project-name{
+  color: #00095E;
+    margin-bottom: 10px;
+
+
+}
+.detail-label {
+  display: inline-block;
+  width: 60px;
+  margin-right: 10px;
+  font-weight: bold;
+  color: #00095E;}
+
+.detail-value {
+  display: inline-block;
+  color: #000000;
+}
+.project-description{
+  color: #000000;
+
+}
+
+
+.todo-status {
+  background-color: #f7fafc;
+  color: #000;
+  font-size: 0.7rem;
+  font-weight: 200;
+  padding: 0.25rem 0.25rem;
+  border-radius: 9999px;
+  text-align: center;
+}
+
+.todo-status-align-end {
+  align-self: flex-end;
+}
+.team-members {
+  display: flex;
+}
+
+.team-members {
+  display: flex;
+}
+
+.team-member {
+  margin-right: 10px;
+}
+
+
+.page-titles {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 50px;
+  background-color: #f9f9f9;
+  box-shadow: #00095E;
+  margin-bottom: 40px;
+
+
+
+}
+
+.page-title {
+  cursor: pointer;
+  padding: 10px 20px;
+  transition: all 0.3s ease;
+  color: #00095E;
+}
+
+
+
+
+
+
+.custom-form-field {
+  width: 48%;
+  position: relative;
+  margin-left: auto;
+}
+
+
+.custom-form-field .input-group-text {
+  color: #facc15;
+  background-color: transparent;
+  border: none;
+}
+
+.custom-form-field .input-group-prepend {
+  left: 2%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+
+.custom-form-field input.form-control {
+  padding-left: 2.5rem;
+  height: 32px;
+  font-size: 14px;
+  border-radius: 0.5rem;
+  border: 1px solid #ced4da;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.custom-form-field input.form-control:focus {
+  border-color: #facc15;
+  outline: 0;
+  box-shadow: #facc15;
+}
+.custom-icon {
+  position: absolute;
+  left: 10px;
+  top: 93%;
+  transform: translateY(-50%);
+}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Account Creation</title>
+</head>
+<body>
+    <p>Dear Company,</p>
+    <p>Thank you for choosing Wind Consulting. Your company account has been successfully created.</p>
+    <p>Below is your temporary password:</p>
+    <p><strong>{{ generatedPassword }}</strong></p>
+    <p>Please login to your account and change your password for security purposes.</p>
+    <br>
+    <p>Best regards,<br>Wind Consulting Team</p>
+</body>
+</html>

@@ -1,0 +1,56 @@
+.todo-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.todo-container:hover {
+  background-color: #edf2f7;
+}
+
+.todo-content {
+  border-left: 4px solid #e2e8f0;
+  padding-left: 1rem;
+}
+
+.todo-title {
+  font-weight: bold;
+}
+
+.todo-description {
+  color: #718096;
+  max-height: 1.5rem; /* Or whatever value you desire */
+  overflow-y: hidden;
+}
+
+.todo-status {
+  background-color: #f7fafc;
+  border: 1px solid #cbd5e0;
+  color: #718096;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px; /* Ensures the button has a round shape */
+}
+
+
+
+
+.border-yellow {
+  border-color: #facc15;
+}
+
+.border-blue {
+  border-color: #86B6F6;
+}
+
+.border-red {
+  border-color: #FA7070;
+}
+
+.border-green {
+  border-color: #A1EEBD;
+}

@@ -1,0 +1,97 @@
+<div class="blank-layout-container">
+  <div class="position-relative row w-100 h-100">
+    <div class="col-lg-6 d-flex align-items-center justify-content-center">
+      <div class="image-wrapper">
+        <img src="./assets/images/logos/loginimage2png.png" alt="Image" class="image" />
+      </div>
+    </div>
+    <div class="form-container col-lg-6 d-flex align-items-center justify-content-center">
+      <mat-card class="form-login-card boxed-auth">
+        <mat-card-content class="p-32">
+          <div class="logo-container">
+            <a class="logo-position" [routerLink]="['/dashboard']">
+              <img src="./assets/images/logos/lw5.png" alt="logo" style="width: 100px; height: 100px;" />
+            </a>
+          </div>
+
+          <form [formGroup]="registerForm" (ngSubmit)="register()">
+            <div class="form-row">
+              <div class="form-group">
+                <mat-label class="custom-label mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Nom de votre entreprise</mat-label>
+                <mat-form-field appearance="outline" class="w-100" color="primary">
+                  <input matInput formControlName="companyName" placeholder="Nom de votre entreprise" required />
+                  <mat-error *ngIf="registerForm.get('companyName')?.hasError('required')">
+                    Ce champ est requis
+                  </mat-error>
+                  <mat-error *ngIf="registerForm.get('companyName')?.hasError('pattern')">
+                    Saisir que des lettres
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <mat-label class="custom-label mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Le secteur</mat-label>
+                <mat-form-field appearance="outline" class="w-100" color="primary">
+                  <input matInput formControlName="sector" placeholder="Le secteur" required />
+                  <mat-error *ngIf="registerForm.get('sector')?.hasError('required')">
+                    Ce champ est requis
+                  </mat-error>
+                  <mat-error *ngIf="registerForm.get('sector')?.hasError('pattern')">
+                    Saisir que des lettres
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <mat-label class="custom-label mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Taille de l'entreprise</mat-label>
+                <mat-form-field appearance="outline" class="w-100" color="primary">
+                  <input matInput formControlName="size" placeholder="Taille de l'entreprise" type="number" min="1" required />
+                  <mat-error *ngIf="registerForm.get('size')?.hasError('required')">
+                    Ce champ est requis
+                  </mat-error>
+                  <mat-error *ngIf="registerForm.get('size')?.hasError('min')">
+                    La taille doit être au moins 1
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <mat-label class="custom-label mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Numéro de téléphone</mat-label>
+                <mat-form-field appearance="outline" class="w-100" color="primary">
+                  <input matInput formControlName="phoneNumber" placeholder="Numéro de téléphone" required />
+                  <mat-error *ngIf="registerForm.get('phoneNumber')?.hasError('required')">
+                    Ce champ est requis
+                  </mat-error>
+                  <mat-error *ngIf="registerForm.get('phoneNumber')?.hasError('pattern')">
+                    Veuillez saisir un numéro de(8 à 15 chiffres)
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <mat-label class="custom-label mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Adresse Email</mat-label>
+                <mat-form-field appearance="outline" class="w-100" color="primary">
+                  <input matInput formControlName="email" placeholder="Adresse Email" required />
+                  <mat-error *ngIf="registerForm.get('email')?.hasError('required')">
+                    Ce champ est requis
+                  </mat-error>
+                  <mat-error *ngIf="registerForm.get('email')?.hasError('email')">
+                    Veuillez saisir une adresse email valide
+                  </mat-error>
+                  <mat-error *ngIf="registerForm.get('email')?.hasError('emailExists')">
+                    Cette adresse email est déjà utilisée
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <button mat-flat-button color="primary" class="w-100" type="submit" [disabled]="!registerForm.valid">Add Company</button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+

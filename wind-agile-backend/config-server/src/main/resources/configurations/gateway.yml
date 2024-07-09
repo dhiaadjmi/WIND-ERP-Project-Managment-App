@@ -1,0 +1,28 @@
+server:
+  port: 8222
+
+eureka:
+  client:
+    register-with-eureka: false
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+
+        - id: authentication
+          uri: http://localhost:8060
+          predicates:
+            - Path=/**
+        - id: agileProjectManagment
+          uri: http://localhost:8050
+          predicates:
+            - Path=/**
+
+
+

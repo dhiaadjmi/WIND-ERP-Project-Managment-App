@@ -1,0 +1,54 @@
+.add-sprint-title {
+  color: #00095E;
+  margin-bottom: 16px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.mat-label {
+  color: #00095E;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.form-column {
+  flex-basis: calc(50% - 10px);
+  margin-bottom: 20px;
+}
+
+.add-sprint-card {
+  width: 1100px;
+  margin: 0 auto;
+  border: none;
+  box-shadow: none;
+}
+
+.mat-card-content {
+  border-top: none;
+}
+mat-label{
+  color: #00095E;
+
+}
+
+.annuler{
+  color:#00095E ;
+
+}
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.centered-buttons {
+  display: flex;
+  justify-content: center;
+}
+.annuler{
+  color: #00095E;
+}

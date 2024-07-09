@@ -1,0 +1,33 @@
+<h2 mat-dialog-title class="update-team-title">Mettre à jour l'équipe</h2>
+<div mat-dialog-content>
+  <form [formGroup]="teamForm" (ngSubmit)="onUpdateClick()">
+    <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Nom de l'équipe</mat-label>
+    <mat-form-field appearance="outline" class="w-100" color="primary">
+      <input matInput formControlName="teamName" placeholder="Nom de l'équipe" required />
+    </mat-form-field>
+
+    <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Leader</mat-label>
+    <mat-form-field appearance="outline" class="w-100" color="primary">
+      <mat-select formControlName="selectedLeader" placeholder="Sélectionnez un leader">
+        <mat-option *ngFor="let leader of leaders" [value]="leader.id">{{ leader.firstname }} {{ leader.lastname }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Membres</mat-label>
+    <mat-form-field appearance="outline" class="w-100" color="primary">
+      <mat-select formControlName="selectedEmployees" multiple placeholder="Sélectionnez des membres">
+        <mat-option *ngFor="let employee of employees" [value]="employee.id" >
+          {{ employee.firstname }} {{ employee.lastname }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+  </form>
+</div>
+
+<div mat-dialog-actions class="centered-buttons">
+  <button mat-button color="primary" type="submit" (click)="onUpdateClick()">Mettre à jour</button>
+
+  <button mat-button class="annuler"  (click)="onNoClick()">Annuler</button>
+</div>

@@ -1,0 +1,129 @@
+<div class="task-details" [ngClass]="{ 'scrollable-dialog': isScrollable }">
+  <button mat-icon-button class="close-button" aria-label="Fermer" (click)="closeDialog()">
+    <mat-icon>close</mat-icon>
+  </button>
+  <div class="card task-images-card">
+    <div class="header-container">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="task-info">
+          <h2 class="task-title">{{ taskData.name }}
+            <span *ngIf="taskData.state" class="task-status" [ngStyle]="{
+              'background-color': taskData.state === 'ON_HOLD' ? '#facc15' :
+                                  taskData.state === 'IN_PROGRESS' ? '#86B6F6' :
+                                  taskData.state === 'CANCELED' ? '#FA7070' :
+                                  taskData.state === 'COMPLETED' ? '#A1EEBD' : 'transparent',
+              'margin-left': '10px'
+            }">
+              {{ taskStateTranslations[taskData.state] }}
+              <ng-container *ngIf="taskData.state === 'ON_HOLD'">
+                <i class="state-icon fas fa-clock"></i>
+              </ng-container>
+              <ng-container *ngIf="taskData.state === 'IN_PROGRESS'">
+                <i class="state-icon fas fa-hourglass-half"></i>
+              </ng-container>
+              <ng-container *ngIf="taskData.state === 'CANCELED'">
+                <i class="state-icon fas fa-times-circle"></i>
+              </ng-container>
+              <ng-container *ngIf="taskData.state === 'COMPLETED'">
+                <i class="state-icon fas fa-check-circle"></i>
+              </ng-container>
+            </span>
+          </h2>
+        </div>
+
+        <div class="user-details" *ngIf="userData">
+          <div class="avatar">
+            <img [src]="userData.profileImageUrl" alt="User Avatar" class="rounded-circle object-cover mb-2" width="45" height="45">
+          </div>
+          <span class="username">{{ userData.firstname }} {{ userData.lastname }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="task-alignment">
+      <div class="description">
+          <p><i class="desciption-icon icon fas fa-align-left"></i> {{ taskData.description }}</p>
+      </div>
+      <div class="estimation-priority">
+
+          <span style="color: #facc15;"><i class="fa fa-clock-o" aria-hidden="true"></i></span>&nbsp; {{ taskData.estimation }} jours
+      </div>
+  </div>
+
+  <div class="task-images-container">
+    <div *ngIf="taskData.imageUrls && taskData.imageUrls.length > 0" class="task-images">
+      <div class="image-item" >
+        <div class="image-controls">
+          <button mat-mini-fab color="primary" class="next-preview-image" (click)="prevImage()"><i class="fas fa-chevron-left"></i></button>
+          <img [src]="generateImageUrl(taskData.imageUrls[currentImageIndex])" alt="Task Image" class="task-image" [ngClass]="{ 'task-image-expanded': isImageExpanded }" (click)="openImageScreenDialog(generateImageUrl(taskData.imageUrls[currentImageIndex]))">
+          <button mat-mini-fab color="primary" class="next-preview-image" (click)="nextImage()"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="hover-message">
+          <i class="fas fa-search-plus"></i> Cliquez pour agrandir
+        </div>
+      </div>
+
+
+      </div>
+
+  </div>
+    <div class="add-image-button d-flex justify-content-center mt-5 mb-3">
+      <button mat-mini-fab color="primary" matTooltip="Ajouter des images" (click)="openImageDialog(taskData.id)">
+        <mat-icon class="add-photo-alternate" style="font-size: 24px; margin: auto;">add_photo_alternate</mat-icon>
+      </button>
+
+    </div>
+    <span style="color: #00095E;"><i class="fa fa-calendar" aria-hidden="true"></i></span> &nbsp;&nbsp;{{ taskData.startDate | date: 'shortDate' }}<br>
+    <span style="color: #00095E;"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></span>&nbsp; {{ taskData.priority }}
+
+  </div>
+
+
+  <div class="comment-section">
+    <div class="add-comment-section">
+      <mat-form-field appearance="outline" class="w-100" color="primary">
+        <textarea matInput name="commentaire" [(ngModel)]="newCommentText" placeholder="Vous pouvez saisir votre commentaire ici " required></textarea>
+      </mat-form-field>
+      <div class="add-comment text-right">
+        <button mat-flat-button color="primary" matTooltip="Ajouter un commentaire" (click)="addComment()">
+          <span style="display: flex; align-items: center;">
+            <span>Enregistrer</span>
+            <mat-icon style="margin-left: 5px;">playlist_add</mat-icon>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div *ngFor="let comment of taskData.comments.slice(0, numCommentsToShow); let i = index" class="task-comment media-block">
+      <div class="avatar">
+        <img [src]="comment.userData?.profileImageUrl" alt="User Avatar" class="rounded-circle object-cover mb-2" width="45" height="45">
+      </div>
+      <div class="media-body">
+        <div class="mar-btm">
+          <a class="comment-username">{{ comment.userData?.firstname }} {{ comment.userData?.lastname }}</a>
+          <div class="comment-date d-flex">
+            <p class="text-muted text-sm flex-grow-1">{{ getElapsedTime(comment.date) }}</p>
+          </div>
+        </div>
+        <p class="comment-text">{{ comment.text }}</p>
+      </div>
+      <div class="delete-button ml-auto">
+        <button class="delete-button-color" *ngIf="comment.userId == userId" mat-icon-button  aria-label="Supprimer le commentaire" (click)="deleteComment(comment.id, i)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div *ngIf="taskData.comments.length > numCommentsToShow">
+      <button mat-flat-button (click)="numCommentsToShow = numCommentsToShow + 3" class="text-button">
+        Afficher encore plus <i class="fas fa-chevron-down"></i>
+      </button>
+    </div>
+
+
+  </div>
+
+
+
+
+
+</div>
+
+

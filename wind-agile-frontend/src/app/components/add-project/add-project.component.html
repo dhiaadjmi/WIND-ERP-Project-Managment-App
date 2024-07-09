@@ -1,0 +1,63 @@
+<mat-card class="add-project-card" >
+  <mat-card-title class="add-project-title">Ajouter un nouveau Projet</mat-card-title>
+  <mat-card-content>
+    <form class="m-t-30 form-row" #addProjectForm="ngForm">
+
+      <div class="form-column">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Nom</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <input matInput name="nom" [(ngModel)]="project.nom" placeholder="Nom" required />
+        </mat-form-field>
+      </div>
+
+      <div class="form-column">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Description</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <textarea matInput name="description" [(ngModel)]="project.description" placeholder="Description" required></textarea>
+        </mat-form-field>
+      </div>
+      <div class="form-column">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">État du Projet</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <mat-select [(value)]="selectedState" name="state" required placeholder="Sélectionner l'état de projet">
+            <mat-option value="" disabled selected>Sélectionner l'état de projet</mat-option>
+
+            <mat-option *ngFor="let state of projectStates" [value]="state.value" (click)="selectState(state.value)">{{ state.label }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+
+
+      <div class="form-column">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Date de début</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <input matInput [matDatepicker]="startDatePicker" name="startDate" [(ngModel)]="project.startDate" placeholder="Date de début" required />
+          <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #startDatePicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="form-column">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Date de fin</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <input matInput [matDatepicker]="endDatePicker" name="endDate" [(ngModel)]="project.endDate" placeholder="Date de fin" required />
+          <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #endDatePicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="form-column">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Équipe</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <mat-select [(ngModel)]="selectedTeamId" name="team" required placeholder="Sélectionner une équipe">
+            <mat-option value="" disabled selected>Sélectionner une équipe</mat-option>
+            <mat-option *ngFor="let team of teams" [value]="team.id">{{ team.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+
+      <button mat-flat-button color="primary" class="w-100" (click)="addProject()" >Ajouter Projet</button>
+    </form>
+  </mat-card-content>
+</mat-card>

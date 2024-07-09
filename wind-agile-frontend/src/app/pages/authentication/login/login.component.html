@@ -1,0 +1,72 @@
+<div class="blank-layout-container ">
+  <div class="position-relative row w-100 h-100 ">
+
+    <div class="col-lg-6 d-flex align-items-center">
+      <mat-card class="form-login-card  boxed-auth">
+        <mat-card-content class="p-32">
+          <div class="logo-container">
+            <a class="logo-position" [routerLink]="['/dashboard']">
+              <img src="./assets/images/logos/lw5.png" alt="logo" style="width: 120px; height: 120px;" />
+            </a>
+          </div>
+
+          <form class="m-t-30" #loginForm="ngForm">
+
+            <mat-label class="custom-label mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Email</mat-label>
+            <mat-form-field appearance="outline" class="w-100" color="primary">
+              <mat-icon matPrefix>email</mat-icon>
+              <input matInput name="email" [(ngModel)]="email" placeholder="Email" required />
+            </mat-form-field>
+
+ <!--
+
+ <mat-label class="custom-label mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Email</mat-label>
+ <mat-form-field appearance="outline" class="w-100" color="primary">
+  <mat-icon matPrefix>email</mat-icon>
+  <input matInput name="email" [(ngModel)]="email" placeholder="Email" required pattern="{{ emailRegex }}" />
+  <mat-error *ngIf="!email.match(emailRegex) && (email || email === '')">
+    Email invalide
+  </mat-error>
+</mat-form-field>
+-->
+
+            <mat-label class="custom-label mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Password</mat-label>
+            <mat-form-field appearance="outline" class="w-100" color="primary">
+              <mat-icon matPrefix>https</mat-icon>
+              <input matInput name="password" [(ngModel)]="password" placeholder="Password" type="{{ hidePassword ? 'password' : 'text' }}" required />
+              <button mat-icon-button matSuffix *ngIf="password" (click)="togglePasswordVisibility()">
+                <mat-icon style="color: #00095E">{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+              </button>
+            </mat-form-field>
+
+
+            <button mat-flat-button color="primary" class="w-100" (click)="signIn()" [disabled]="!loginForm.form.valid">Sign In</button>
+
+            <div class=" d-flex align-items-center  prm-b-12 ">
+              <mat-checkbox color="primary"> <label class="custom-label-remember">Remember me</label> </mat-checkbox>
+
+              <a [routerLink]="['/authentication/resetpassword']" class=" f-w-600 text-decoration-none m-l-auto f-s-14" style="color: #00095e;">Forgot Password ?</a>
+            </div>
+
+
+
+            <span class=" d-block f-w-500 text-center m-t-24"  >
+              <a [routerLink]="['/authentication/register']" class="text-decoration-none  f-w-500 f-s-14" style="color: #00095e;" >
+                Create an account
+              </a>
+            </span>
+          </form>
+          <div *ngIf="errorMessage" class="error-message">
+            {{ errorMessage }}
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-lg-6 d-flex align-items-center justify-content-center">
+      <div class="image-wrapper">
+        <img src="./assets/images/logos/loginimage2png.png" alt="Image" class="image" />
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,119 @@
+<!--<div class="example-container">
+  <mat-card>
+    <h4 style="text-align: center;color: #00095E;">Default Sprint</h4>
+    <div class="example-box">
+      <div>
+        <div class="label">{{ getDefaultSprint()?.objectif }}</div><br>
+      </div>
+      <div class="box">
+      </div>
+    </div>
+  </mat-card>
+</div>
+-->
+<div class="container-fluid">
+  <div class="row">
+    <div cdkDropListGroup>
+      <div class="row">
+
+
+
+
+        <!-- ON_HOLD Section -->
+        <div class="col-md-3">
+          <div class="example-container">
+            <mat-card>
+              <h4 style="text-align: center;color: #00095E;" >ON_HOLD <span *ngIf="getSprintsByState('ON_HOLD').length > 0">{{getSprintsByState('ON_HOLD').length}}</span></h4>
+              <div cdkDropList [cdkDropListData]="getSprintsByState('ON_HOLD')" class="example-list" (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let item of getSprintsByState('ON_HOLD'); let i = index" cdkDrag>
+                  <div>
+                    <div class="sprint-name">
+                      {{ item.name }}
+                    </div>
+                    <div class="label">{{ item.objectif }}</div><br>
+                    <span style="color: #00095E;"><i class="fa fa-calendar" aria-hidden="true"></i></span> &nbsp;&nbsp;{{ item.startDate | date: 'medium' }}<br>
+                    <span style="color: #FA7070;"><i class="fa fa-calendar" aria-hidden="true"></i></span>&nbsp;&nbsp; {{ item.endDate | date: 'medium' }}
+                  </div>
+                  <div class="box">
+                    <button mat-icon-button color="primary" (click)="deleteSprint(i)"><mat-icon>delete</mat-icon></button>
+                    <button mat-icon-button color="primary" (click)="onEdit(item, i)"><mat-icon>autorenew</mat-icon></button>
+                  </div>
+                </div>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+        <!-- IN_PROGRESS Section -->
+        <div class="col-md-3">
+          <div class="example-container">
+            <mat-card>
+              <h4 style="text-align: center;color: #00095E;">IN_PROGRESS <span *ngIf="getSprintsByState('IN_PROGRESS').length > 0">{{getSprintsByState('IN_PROGRESS').length}}</span></h4>
+              <div cdkDropList [cdkDropListData]="getSprintsByState('IN_PROGRESS')" class="example-list" (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let item of getSprintsByState('IN_PROGRESS'); let i = index" cdkDrag>
+                  <div>
+                    <div class="sprint-name">
+                      {{ item.name }}
+                    </div>
+                    <div class="label">{{ item.objectif }}</div><br>
+                    <span style="color: #00095E;"><i class="fa fa-calendar" aria-hidden="true"></i></span>&nbsp; {{ item.startDate | date: 'medium' }}<br>
+                    <span style="color: #FA7070;;"><i class="fa fa-calendar" aria-hidden="true"></i> </span>&nbsp;&nbsp;{{ item.endDate | date: 'medium' }}
+                  </div>
+                  <div class="box">
+                    <button mat-icon-button color="primary" (click)="deleteInProgressSprint(i)"><mat-icon>delete</mat-icon></button>
+                  </div>
+                </div>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+        <!-- COMPLETED Section -->
+        <div class="col-md-3">
+          <div class="example-container">
+            <mat-card>
+              <h4 style="text-align: center;color: #00095E;">COMPLETED <span *ngIf="getSprintsByState('COMPLETED').length > 0">{{getSprintsByState('COMPLETED').length}}</span></h4>
+              <div cdkDropList [cdkDropListData]="getSprintsByState('COMPLETED')" class="example-list" (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let item of getSprintsByState('COMPLETED'); let i = index"  cdkDrag>
+                  <div>
+                    <div class="sprint-name">
+                      {{ item.name }}
+                    </div>
+                    <div class="label">{{ item.objectif }}</div><br>
+                    <span style="color: #00095E;"><i class="fa fa-calendar" aria-hidden="true"></i> </span>&nbsp;{{ item.startDate | date: 'medium' }}<br>
+                    <span style="color: #FA7070;;"><i class="fa fa-calendar" aria-hidden="true"></i> </span>&nbsp;&nbsp;{{ item.endDate | date: 'medium' }}
+                  </div>
+                  <div class="box">
+                    <button mat-icon-button color="primary" (click)="deleteDoneSprint(i)"><mat-icon>delete</mat-icon></button>
+                    <button mat-icon-button class="custom-button"><mat-icon>check_circle</mat-icon></button>
+                  </div>
+                </div>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+        <!-- CANCELED Section -->
+        <div class="col-md-3">
+          <div class="example-container">
+            <mat-card>
+              <h4 style="text-align: center;color: #00095E;">CANCELED <span *ngIf="getSprintsByState('CANCELED').length > 0">{{getSprintsByState('CANCELED').length}}</span></h4>
+              <div cdkDropList [cdkDropListData]="getSprintsByState('CANCELED')" class="example-list" (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let item of getSprintsByState('CANCELED'); let i = index"  cdkDrag>
+                  <div>
+                    <div class="sprint-name">
+                    {{ item.name }}
+                  </div>
+                    <div class="label">{{ item.objectif }}</div><br>
+                    <span style="color: #00095E;"><i class="fa fa-calendar" aria-hidden="true"></i></span> {{ item.startDate | date: 'medium' }}<br>
+                    <span style="color: #FA7070;;"><i class="fa fa-calendar" aria-hidden="true"></i> </span>{{ item.endDate | date: 'medium' }}
+                  </div>
+                  <div class="box">
+                    <button mat-icon-button color="primary" (click)="deleteDoneSprint(i)"><mat-icon>delete</mat-icon></button>
+                  </div>
+                </div>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

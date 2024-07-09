@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-lg-6 col-md-6 col-sm-12">
+    <mat-card class="team-card">
+      <mat-card-content class="p-24">
+        <div class="d-flex align-items-center justify-content-center text">
+          <div>
+            <i class="home-page-icon fa fa-users member-icon"></i>
+            <h3 class="card-title">
+Total  Équipes</h3>
+<h1 class="card-number">{{ activeUserTeamsCount }}</h1>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+
+  <div class="col-lg-6 col-md-6 col-sm-12">
+    <mat-card class="task-card">
+      <mat-card-content class="p-24">
+        <div class="d-flex align-items-center justify-content-center text">
+          <div>
+            <i class="home-page-icon material-icons  ">assignment</i>
+
+            <h3 class="card-title">
+              Total taches</h3>
+            <h1 class="card-number">{{ activeTasksCount }}</h1>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+  <div class="task-overview col-lg-12 col-sm-12">
+    <mat-card class="cardWithShadow task-card">
+      <mat-card-content class="p-24">
+        <mat-card-title class="tasks-state">Les taches selon leurs états</mat-card-title>
+
+
+
+
+        <div class="mt-4">
+          <apx-chart
+          class="custom-chart"
+          [series]="chartOptions.series"
+          [chart]="chartOptions.chart"
+          [colors]="chartOptions.colors"
+          [labels]="['IN_PROGRESS', 'COMPLETED', 'ON_HOLD', 'CANCELED']"
+          [legend]="{ position: 'bottom' }"
+          *ngIf="chartOptions.series && chartOptions.chart && chartOptions.colors"
+        ></apx-chart>
+
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <app-user-tasks-kanban></app-user-tasks-kanban>
+  <app-user-timeline></app-user-timeline>

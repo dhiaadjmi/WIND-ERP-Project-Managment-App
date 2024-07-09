@@ -1,0 +1,47 @@
+<mat-card>
+  <mat-card-title >Mettre à jour votre profil</mat-card-title>
+  <mat-card-content class="p-32">
+    <form class="m-t-30" #updateProfileForm="ngForm">
+      <div class="image-profile-edit text-center d-flex justify-content-center">
+        <label for="profileImageInput" class="change-profile-label">
+          <img *ngIf="profileImageUrl" [src]="profileImageUrl" class="rounded-circle object-cover profile-image"
+            alt="profileimage" style="width: 160px; height: 160px;">
+          <span class="change-profile-text">cliquer sur l'image pour pouvoir changer votre photo de profil</span>
+        </label>
+        <input type="file" id="profileImageInput" accept="image/*" (change)="onFileSelected($event)" style="display: none;">
+      </div>
+
+      <div class="form-row">
+        <div class="form-column">
+          <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Nom de l'entreprise</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input matInput name="companyName" [(ngModel)]="companyName" placeholder="Nom de l'entreprise" required />
+          </mat-form-field>
+        </div>
+        <div class="form-column">
+          <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Secteur</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input matInput name="sector" [(ngModel)]="sector" placeholder="Secteur" required />
+          </mat-form-field>
+        </div>
+        <div class="form-column">
+          <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Taille</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input matInput name="size" [(ngModel)]="size" placeholder="Secteur" required />
+          </mat-form-field>
+        </div>
+        <div class="form-column">
+          <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Numéro de téléphone</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input matInput name="phoneNumber" [(ngModel)]="phoneNumber" placeholder="Numéro de téléphone" required />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="button-update-profile">
+      <button mat-flat-button color="primary" matTooltip="Info about the action" (click)="updateProfileAndCompany()">
+        Mettre à jour   &nbsp;&nbsp;<i class="fas fa-sync-alt"></i>
+      </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

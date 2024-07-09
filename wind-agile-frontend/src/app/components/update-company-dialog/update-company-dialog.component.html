@@ -1,0 +1,51 @@
+<h2 mat-dialog-title class="update-company-title">Update Company</h2>
+<button mat-icon-button class="close-button" aria-label="Fermer" (click)="closeDialog()">
+  <mat-icon>close</mat-icon>
+</button>
+<div mat-dialog-content>
+  <div class="field-container">
+    <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Email</mat-label>
+    <mat-form-field appearance="outline" class="w-100" color="primary">
+      <input matInput placeholder="Email" [(ngModel)]="data.email" required />
+    </mat-form-field>
+  </div>
+
+  <div class="field-container">
+    <div class="field-pair">
+      <div class="field-item">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Company Name</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <input matInput placeholder="Company Name" [(ngModel)]="data.companyName" required />
+        </mat-form-field>
+      </div>
+      <div class="field-item">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Sector</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <input matInput placeholder="Sector" [(ngModel)]="data.sector" required />
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <div class="field-container">
+    <div class="field-pair">
+      <div class="field-item">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Size</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <input matInput placeholder="Size" [(ngModel)]="data.size" type="number" min="1" required />
+        </mat-form-field>
+      </div>
+      <div class="field-item">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Phone Number</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <input matInput placeholder="Phone Number" [(ngModel)]="data.phoneNumber" required />
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div mat-dialog-actions class="centered-buttons">
+  <button mat-button color="primary" (click)="onUpdateClick()">Mettre à jour</button>
+  <button mat-button class="annuler" (click)="onNoClick()">Annuler</button>
+</div>

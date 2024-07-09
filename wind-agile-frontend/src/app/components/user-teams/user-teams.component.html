@@ -1,0 +1,59 @@
+
+<div>
+  <div class="page-titles">
+    <div class="page-title"  style="color: #facc15;font-weight: bold;text-decoration: underline;  text-decoration-thickness: 2px;
+    text-underline-offset: 10px;" >Mes Équipes</div>
+    <div class="page-title"  ></div>
+    <div class="page-title"  ></div>
+  </div>
+  <div>
+    <mat-card-header class="header-center">
+
+    <mat-card-title><i class="team-icon fa fa-users member-icon"></i>  Mes Équipes</mat-card-title>
+  </mat-card-header>
+
+
+  </div>
+
+  <div class="teams-container">
+    <div *ngFor="let team of teams" class="col-md-4 mb-4 team-card">
+      <mat-card>
+        <mat-card-header class="header-center">
+          <mat-card-title class="team-name">{{ team.name }}</mat-card-title>
+        </mat-card-header>
+                <hr class="name-divider">
+
+
+        <mat-card-content class="profile-images">
+          <ng-container *ngFor="let user of team.users">
+            <div class="avatar-container" *ngIf="isLeader(user)">
+
+              <p  class="member-label">               <i class="icons fa fa-user leader-icon"></i>
+                  Leader:</p>
+                  <img matListAvatar [src]="user.profileImageUrl" alt="Leader Avatar" class="rounded-circle object-cover mb-2 user-avatar"  (click)="openUserDetails(user)">
+                </div>
+          </ng-container>
+
+          <div class="members-container" *ngIf="team.users.length > 1">
+
+
+            <p class="member-label"> <i class="icons fa fa-users member-icon"></i>Membres:</p>
+            <div class="avatar-container inline-images">
+              <ng-container *ngFor="let user of team.users">
+                <div *ngIf="!isLeader(user)">
+                  <img matListAvatar [src]="user.profileImageUrl" alt="User Avatar" class="rounded-circle object-cover mb-2 user-avatar"  (click)="openUserDetails(user)">
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </mat-card-content>
+
+        <div class="project-details mb-2">
+          <div class="teams-icons">
+            <mat-icon matTooltip="Visibilité" class="action-icon" (click)="showTeamProjects(team.id)">visibility</mat-icon>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

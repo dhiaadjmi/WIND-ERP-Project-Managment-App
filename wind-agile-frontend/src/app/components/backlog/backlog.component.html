@@ -1,0 +1,56 @@
+<div class="backlog">
+  <div>
+    <mat-card-title class="backlog-header">Liste des sprints de projet </mat-card-title>
+  </div>
+
+  <div class="backlog-sprints" cdkDropList (cdkDropListDropped)="drop($event)">
+    <mat-card class="backlog-container" *ngFor="let sprint of backlog.sprints" cdkDrag>
+      <mat-card-content class="b-t-1">
+        <div class="d-flex justify-content-between">
+          <div class="todo-content" [ngClass]="{
+            'border-yellow': sprint.state === 'ON_HOLD',
+            'border-blue': sprint.state === 'IN_PROGRESS',
+            'border-red': sprint.state === 'CANCELED',
+            'border-green': sprint.state === 'COMPLETED'
+        }" cdkDragHandle>
+
+
+
+            <div class="d-flex align-items-center justify-content-between">
+              <h4 class="todo-title">{{ sprint.name }}</h4>
+
+                <div *ngIf="sprint.state" class="todo-status todo-status-align-end" [ngStyle]="{
+    'background-color': sprint.state === 'ON_HOLD' ? '#facc15' :
+                        sprint.state === 'IN_PROGRESS' ? '#86B6F6' :
+                        sprint.state === 'CANCELED' ? '#FA7070' :
+                        sprint.state === 'COMPLETED' ? '#A1EEBD' : 'transparent'
+
+}">
+    {{ sprint.state }}
+</div>
+
+
+              <!--
+              <div *ngIf="sprint.state" class="todo-status todo-status-align-end" [ngClass]="{
+                'text-yellow': sprint.state === 'ON_HOLD',
+                'text-blue': sprint.state === 'IN_PROGRESS',
+                'text-red': sprint.state === 'CANCELED',
+                'text-green': sprint.state === 'COMPLETED'
+            }">{{ sprint.state }}</div>
+
+-->
+
+                        </div>
+            <p class="todo-description">{{ sprint.objectif }}</p>
+            <div class="backlog-actions d-flex align-items-end justify-content-end">
+              <mat-icon matTooltip="Modifier" class="action-icon">autorenew</mat-icon>
+              <mat-icon matTooltip="Supprimer" class="action-icon" (click)="deleteSprint(sprint.id)">delete</mat-icon>
+              <mat-icon matTooltip="Visibilité" class="action-icon" (click)="viewSprintDetails(sprint.id)">visibility</mat-icon>
+
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

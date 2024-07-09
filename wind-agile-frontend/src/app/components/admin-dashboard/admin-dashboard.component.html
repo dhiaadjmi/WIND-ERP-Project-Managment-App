@@ -1,0 +1,78 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <mat-card class="card-for-total">
+        <mat-card-title class="title">Total des entreprises</mat-card-title>
+        <mat-card-content class="p-24">
+          <div class="d-flex align-items-center justify-content-center">
+            <h4 class="users-count mat-headline-5"></h4>
+          </div>
+    <div class="d-flex align-items-center justify-content-center"> <!-- Ajouter les classes pour centrer horizontalement -->
+          <img class="building-icon"    src="./assets/images/logos/Company.png" width="200" height="200"
+          alt="Building Icon">
+        </div>
+          <div class="d-flex align-items-center justify-content-center">
+            <h4 class="users-count mat-headline-5"></h4>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+    </div>
+    <div class="col-lg-8">
+      <mat-card class="cardWithShadow">
+          <mat-card-title class="title ">Taille des entreprises</mat-card-title>
+        <mat-card-content>
+          <div id="sizeChart">
+            <apx-chart
+              [series]="sizeChartOptions.series"
+              [chart]="sizeChartOptions.chart"
+              [xaxis]="sizeChartOptions.xaxis"
+              [colors]="sizeChartOptions.colors"
+            ></apx-chart>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+    <div class="row ">
+
+    <div class="col-lg-4">
+      <mat-card class="cardWithShadow">
+          <mat-card-title class="title" >Validation des comptes des entreprises</mat-card-title>
+        <mat-card-content>
+          <div id="validationChart">
+            <apx-chart
+              [series]="validationChartOptions.series"
+              [chart]="validationChartOptions.chart"
+              [labels]="validationChartOptions.labels"
+              [responsive]="validationChartOptions.responsive"
+              [colors]="validationChartOptions.colors"
+            ></apx-chart>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="col-lg-8">
+      <mat-card class="cardWithShadow">
+          <mat-card-title class="title">Secteurs des entreprises</mat-card-title>
+        <mat-card-content>
+          <div id="sectorChart">
+            <apx-chart
+              [series]="sectorChartOptions.series"
+              [chart]="sectorChartOptions.chart"
+              [dataLabels]="sectorChartOptions.dataLabels"
+              [plotOptions]="sectorChartOptions.plotOptions"
+              [yaxis]="sectorChartOptions.yaxis"
+              [xaxis]="sectorChartOptions.xaxis"
+              [fill]="sectorChartOptions.fill"
+              [title]="sectorChartOptions.title"
+              [colors]="sectorChartOptions.colors"
+            ></apx-chart>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

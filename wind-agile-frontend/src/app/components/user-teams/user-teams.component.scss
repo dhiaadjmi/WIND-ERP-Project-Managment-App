@@ -1,0 +1,184 @@
+.mat-card-header {
+  text-align: center;
+}
+
+.header-center {
+  justify-content: center;
+}
+
+.title {
+  padding-bottom: 40px;
+}
+.add-team-button{
+  margin-bottom: 30px;
+}
+
+.name-divider {
+  border: none;
+  border-top: 2px solid #facc15;
+  margin-top: 5px;
+  width: calc(50% - 90px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.teams-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+mat-card-title {
+  color: #00095E;
+  margin-bottom: 16px;
+  text-align: center;
+  padding-bottom: 2px;
+}
+
+.team-card {
+  width: calc(33.33% - 32px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.avatar-container {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.project-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.profile-images {
+  padding-top: 25px;
+  align-items: center;
+}
+
+.team-name {
+  color: #00095E;
+  margin-bottom: 0px;
+}
+
+.teams-icons {
+  margin-top: auto;
+  margin-left: auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.action-icon {
+  cursor: pointer;
+  margin-left: 8px;
+  color: #facc15;
+}
+
+.member-label {
+  color: #00095E;
+}
+
+.members-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.inline-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.icons {
+  padding-right: 5px;
+  color: #facc15;
+  font-size: 18px;
+}
+
+.team-icon {
+  padding-right: 5px;
+  font-size: 26px;
+}
+
+.user-avatar {
+  width: 45px;
+  height: 45px;
+  border: 2px solid #facc15;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+  margin: 4px;
+}
+
+@media (max-width: 1200px) {
+  .team-card {
+    width: calc(50% - 32px);
+  }
+}
+
+@media (max-width: 768px) {
+  .team-card {
+    width: calc(100% - 32px);
+  }
+}
+
+@media (max-width: 576px) {
+  .team-card {
+    width: calc(100% - 16px);
+    margin: 8px;
+  }
+
+  .title {
+    padding-bottom: 20px;
+    font-size: 1.5rem;
+  }
+
+  .name-divider {
+    width: 80%;
+  }
+
+  .member-label {
+    font-size: 0.9rem;
+  }
+
+  .user-avatar {
+    width: 35px;
+    height: 35px;
+  }
+
+  .action-icon {
+    margin-left: 4px;
+  }
+
+  .avatar-container,
+  .inline-images {
+    justify-content: center;
+  }
+}
+
+
+.page-titles {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 50px;
+  background-color: #f9f9f9;
+  box-shadow: #00095E;
+}
+
+.page-title {
+  cursor: pointer;
+  padding: 10px 20px;
+  transition: all 0.3s ease;
+  color: #00095E;
+}
+
+
+
+
+

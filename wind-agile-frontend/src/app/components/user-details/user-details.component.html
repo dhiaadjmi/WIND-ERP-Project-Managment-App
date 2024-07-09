@@ -1,0 +1,21 @@
+<mat-dialog-content class="dialog-content" role="document" aria-label="Informations utilisateur">
+  <button mat-icon-button class="close-button" aria-label="Fermer" (click)="closeDialog()">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <div class="user-details">
+    <div class="avatar-container">
+      <img [src]="data.profileImageUrl" alt="User Avatar" class="user-avatar">
+    </div>
+    <div class="user-name"><h2>{{ data.firstname }} {{ data.lastname }}</h2> </div>
+
+    <div class="user-info">
+      <div class="info-label"><strong><i class="fas fa-envelope"></i>&nbsp;&nbsp; Email:</strong> {{ data.email }}</div>
+      <div class="info-label"><strong><i class="fas fa-briefcase"></i> &nbsp;&nbsp;Poste:</strong> {{ data.job }}</div>
+      <div class="info-label"><strong><i class="fas fa-phone"></i> &nbsp;&nbsp;Numéro de téléphone:</strong> {{ data.phoneNumber }}</div>
+     <!-- <div class="info-label"><strong><i class="fas fa-user"></i> Rôle:</strong> {{ data.role }}</div>-->
+    </div>
+  </div>
+</mat-dialog-content>
+
+

@@ -1,0 +1,25 @@
+mat-card-title {
+  color: #00095E;
+  margin-bottom: 16px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+mat-label {
+  color: #00095E;
+
+}
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.form-column {
+  flex-basis: calc(50% - 10px);
+  margin-bottom: 20px;
+}
+
+.add-project-card {
+  width: 1000px;
+  margin: 0 auto;
+}

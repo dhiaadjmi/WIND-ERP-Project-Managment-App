@@ -1,0 +1,111 @@
+
+<div class="page-titles" *ngIf="userRole !== 'COMPANY'" >
+  <div class="page-title" (click)="navigateToTeams()" style="cursor: pointer;">Mes Équipes</div>
+  <div class="page-title" (click)="goBack()" >Le Projet de l'Équipe</div>
+  <div class="page-title" style="color: #facc15;font-weight: bold;text-decoration: underline;  text-decoration-thickness: 2px;
+  text-underline-offset: 10px;" >Les Détails du Projet</div>
+</div>
+<div class="page-titles" *ngIf="userRole === 'COMPANY'" >
+  <div class="page-title" (click)="goBack()" > Liste de nos Projets</div>
+  <div class="page-title" style="color: #facc15;font-weight: bold;text-decoration: underline;  text-decoration-thickness: 2px;
+  text-underline-offset: 10px;" >Les Détails du Projet</div>
+</div>
+
+
+<div *ngIf="project" class="project-details">
+  <h2 class="project-name d-flex justify-content-between align-items-center">
+    <span>{{ project.nom }}</span>
+    <span class="todo-status ml-auto" [ngStyle]="{
+      'background-color': project.state === 'En attente' ? '#facc15' :
+      project.state === 'En cours' ? '#86B6F6' :
+      project.state === 'Annulé' ? '#FA7070' :
+      project.state === 'Terminé' ? '#A1EEBD' : 'transparent'
+    }">
+      {{ project.state }}
+      <ng-container *ngIf="project.state === 'En attente'">
+        <i class="state-icon fas  fa-clock"></i>
+      </ng-container>
+      <ng-container *ngIf="project.state === 'En cours'">
+        <i class="state-icon fas fa-hourglass-half"></i>
+      </ng-container>
+      <ng-container *ngIf="project.state === 'Annulé'">
+        <i class="state-icon fas fa-times-circle"></i>
+      </ng-container>
+      <ng-container *ngIf="project.state === 'Terminé'">
+        <i class="state-icon fas fa-check-circle"></i>
+      </ng-container>
+    </span>
+  </h2>
+  <mat-card-content>
+
+    <p><label><i class="icon fas fa-align-left"></i> <strong>Description :</strong></label> <span>{{ project.description }}</span></p>
+    <div class="detail">
+      <div class="row">
+
+        <div class="col-md-6">
+          <p><label><i class="icon fas fa-calendar-alt"></i> <strong>Date de début :</strong></label> <span>{{ project.startDate | date }}</span></p>
+        </div>
+        <div class="col-md-6 text-right">
+          <p><label><i class="end-date icon fas fa-calendar-times"></i> <strong>Date de fin :</strong></label> <span>{{ project.endDate | date }}</span></p>
+        </div>
+      </div>
+    </div>
+
+
+
+  </mat-card-content>
+
+  <mat-tab-group >
+    <mat-tab label="Équipe">
+
+      <mat-card *ngIf="team" class="no-border">
+        <mat-card-content>
+          <div class="user-list">
+            <div class="team-name">
+              <p *ngIf="team"><label><i class="fas fa-users "></i><strong>Équipe:</strong> </label>&nbsp;<span>{{ team.name }}</span></p>
+            </div>
+            <div class="row">
+              <div class="col-md-4" *ngFor="let user of team.users">
+                <mat-card class="user-card">
+                  <div class="text-center">
+                    <img [src]="user.profileImageUrl" alt="User Avatar" class="user-avatar rounded-circle object-cover" width="100">
+                    <b><p style="color: #00095E;">{{ user.firstname }} {{ user.lastname }}</p></b>
+                  </div>
+
+                  <mat-card-content>
+                    <div class="user-details">
+                      <p style="color: #00095E;"><i class="fas fa-envelope"></i> {{ user.email }}</p>
+                      <p style="color: #00095E;"><i class="fas fa-phone"></i>{{ user.phoneNumber }}</p>
+                    </div>
+                    <div class="work">
+                      <p style="color: #00095E;"><strong><i class="fas fa-briefcase" ></i> </strong> {{ user.job }}</p>
+                    </div>
+                         <!--    <div class="col">
+                        <p><strong>Rôle:</strong> {{ user.role }}</p>
+                      </div>
+                      -->
+
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      </mat-tab>
+
+      <mat-tab label="Backlog">
+      <app-project-backlog [projectId]="projectId"  [backlogId]="backlogId" [teamId]="teamId"></app-project-backlog>
+    </mat-tab>
+
+      <mat-tab label="Liste des sprints" class="full-width-tab">
+      <!--  <app-project-sprints [sprints]="projectSprints" [backlog]="projectBacklog">/</app-project-sprints>-->
+      <app-project-sprints  [backlog]="projectBacklog" [teamId]="teamId">/</app-project-sprints>
+     </mat-tab>
+
+
+
+    </mat-tab-group>
+</div>
+

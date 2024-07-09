@@ -1,0 +1,263 @@
+.button-add-backlog{
+  margin-top: 20px;
+
+  display: flex;
+  justify-content: center;
+}
+.backlog-tasks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+
+}
+.add-backlog-button{
+  margin-bottom: 20px;
+}
+.backlog-card {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.backlog-header {
+  color: #00095E;
+  text-align: center;
+  padding-top: 20px;
+
+  padding-bottom: 30px;
+}
+
+
+.backlog-title {
+  font-size: 18px;
+  font-weight: bold;
+  //color: #facc15;
+  margin-bottom: 16px;
+
+}
+
+mat-card {
+  border: 1px solid #ccc;
+  box-shadow: none;
+  margin-bottom: 16px;
+  max-width: 1000px;
+  width: 95%;
+}
+
+
+.todo-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.todo-container:hover {
+  background-color: #edf2f7;
+}
+
+
+
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+}
+.border-yellow {
+  border-color: #facc15;
+}
+
+.border-blue {
+  border-color: #86B6F6;
+}
+
+.border-red {
+  border-color: #FA7070;
+}
+
+.border-green {
+  border-color: #A1EEBD;
+}
+
+
+
+
+.todo-title {
+  color: #000;
+
+  font-weight: bold;
+
+}
+
+.todo-description {
+  color: #000;
+  max-height: 1.5rem;
+  overflow-y: hidden;
+}
+
+
+.todo-status {
+  background-color: #f7fafc;
+  color: #000;
+  font-size: 0.6rem;
+  font-weight: 400;
+  padding: 0.25rem 0.25rem;
+  border-radius: 9999px;
+  text-align: center;
+  min-width: 100px;
+  max-width: 110px;
+
+
+
+}
+
+
+
+
+
+
+.add-icon {
+  font-size: 32px;
+  color: #facc15;
+  cursor: pointer;
+  margin: 0 auto;
+  display: block;
+}
+.backlog-actions {
+
+  color: #facc15;
+  cursor: pointer;
+
+
+}
+.backlog-container {
+
+
+  max-width: 1200px;
+  max-height: 200px;
+}
+.backlog-tasks{
+  padding-bottom: 20px;
+}
+.backlog-tasks mat-card {
+  margin-bottom: 0px;
+}
+.text-yellow {
+  color: yellow;
+}
+
+
+mat-card-title{
+  margin-top: 20px;
+}
+.backlog--button-group  {
+  color: #facc15;
+  cursor: pointer;
+  padding-top: 10px;
+  padding-bottom: 20px;
+
+}
+
+
+.backlog-section{
+  padding-left: 60px;
+}
+.backlog-tasks-card {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.description-icon{
+  margin-right:5px
+}
+.task-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+.backlog-container {
+  border-color: #f2f2f2;
+}
+.task-name{
+  margin-left: 10px;
+}
+.state-icon{
+  margin-left: 5px;
+}
+.user-menu-text{
+
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+font-size: 16px;
+color: #00095E;
+font-weight:400;
+}
+.selected-sprint {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+.sprint-name {
+  flex: 1;
+
+}
+.sprint-state {
+
+  background-color: #f7fafc;
+  color: #000;
+  font-size: 0.6rem;
+  font-weight: 400;
+  padding: 0.25rem 0.25rem;
+  border-radius: 9999px;
+  width: 75px;
+  text-align: center;
+}
+.close-button{
+  margin-right: 20px;
+}
+
+.association-button{
+  margin-left: 20px;
+}
+.buttongroup {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-size: 12px;
+}
+.selected {
+  color:#facc15
+}
+.icons-menu{
+  color:#facc15
+
+
+}
+.actions-menu{
+  color:#00095E
+
+}
+.same-line {
+  display: flex;
+  align-items: center;
+}
+.user-info {
+  display: flex;
+  align-items: center;
+}
+.username{
+  margin-left: 20px;
+
+  color: #00095E;
+
+  }

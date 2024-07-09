@@ -1,0 +1,68 @@
+<mat-card class="add-task-card">
+  <mat-card-title class="add-task-title">Modier cette Tâche</mat-card-title>
+  <mat-card-content>
+    <form class="m-t-30 form-row" #updateTaskForm="ngForm">
+
+      <div class="form-column">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Nom de tache </mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <input matInput name="name" [(ngModel)]="task.name" placeholder="Nom" required />
+        </mat-form-field>
+      </div>
+      <div class="form-column">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Description</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <input matInput name="description" [(ngModel)]="task.description" placeholder="Description" required />
+        </mat-form-field>
+      </div>
+
+
+
+      <div class="form-column">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Date de début</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <input matInput [matDatepicker]="startDatePicker" name="startDate" [(ngModel)]="task.startDate" placeholder="Date de début" required />
+          <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #startDatePicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="form-column">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Estimation (en jours)</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <input matInput type="number" name="estimation" [(ngModel)]="task.estimation" placeholder="Estimation" required />
+        </mat-form-field>
+      </div>
+
+      <div class="form-column">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Priorité</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <mat-select [(ngModel)]="task.priority" name="priority" required>
+            <mat-option value="LOW">Faible</mat-option>
+            <mat-option value="MEDIUM">Moyenne</mat-option>
+            <mat-option value="HIGH">Élevée</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="form-column">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">État</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <mat-select [(ngModel)]="task.state" name="state" required>
+            <mat-option value="IN_PROGRESS" [ngStyle]="{'background-color': '#86B6F6'}">En cours</mat-option>
+            <mat-option value="ON_HOLD" [ngStyle]="{'background-color': '#facc15'}">En attente</mat-option>
+            <mat-option value="CANCELED" [ngStyle]="{'background-color': '#FA7070'}">Annulé</mat-option>
+            <mat-option value="COMPLETED" [ngStyle]="{'background-color': '#A1EEBD'}">Terminé</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+
+
+    </form>
+
+    <div mat-dialog-actions class="centered-buttons">
+      <button mat-button color="primary" type="submit"  (click)="updateTask()">Mettre à jour</button>
+
+      <button mat-button class="annuler" (click)="closeDialog()">Annuler</button>
+    </div>
+  </mat-card-content>
+</mat-card>

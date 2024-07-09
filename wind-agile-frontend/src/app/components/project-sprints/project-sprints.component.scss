@@ -1,0 +1,390 @@
+.sprint-sprints {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  //max-width: 1400px;
+  margin: 0 auto;
+
+}
+
+.add-sprint{
+  margin-top: 20px;
+}
+.sprint-card {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.sprint-header {
+  color: #facc15;
+  margin-bottom: 16px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+mat-card-title{
+  margin-top: 20px;
+}
+
+.sprint-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #facc15;
+  margin-top: 16px;
+
+}
+
+
+mat-card {
+  border: 1px solid #ccc;
+  box-shadow: none;
+  margin-bottom: 16px;
+  max-width: 1000px;
+  width: 95%;
+}
+
+
+.todo-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.todo-container:hover {
+  background-color: #edf2f7;
+}
+
+
+.todo-content {
+  border-left: 4px solid #e2e8f0;
+  padding-left: 1rem;
+  flex: 1;
+}
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+}
+.border-yellow {
+  border-color: #facc15;
+}
+
+.border-blue {
+  border-color: #86B6F6;
+}
+
+.border-red {
+  border-color: #FA7070;
+}
+
+.border-green {
+  border-color: #A1EEBD;
+}
+
+.border-dark-blue {
+  border-color: #00095E;
+}
+
+
+.todo-title {
+  color: #000;
+
+  font-weight: bold;
+}
+
+.todo-description {
+  color: #000;
+  max-height: 1.5rem;
+  overflow-y: hidden;
+}
+
+.todo-status-task {
+  background-color: #f7fafc;
+  color: #000;
+  font-size: 0.6rem;
+  font-weight: 400;
+  padding: 0.25rem 0.25rem;
+  border-radius: 9999px;
+  text-align: center;
+  min-width: 100px;
+  max-width: 110px;
+
+
+
+}
+.todo-status {
+  background-color: #f7fafc;
+  color: #000;
+  font-size: 0.7rem;
+  font-weight: 400;
+  padding: 0.25rem 0.25rem;
+  border-radius: 9999px;
+  text-align: center;
+  margin-bottom: 20px;
+
+
+}
+
+.todo-status-align-end {
+  align-self: flex-end;
+}
+
+
+
+
+
+.add-icon {
+  font-size: 32px;
+  color: #facc15;
+  cursor: pointer;
+  margin: 0 auto;
+  display: block;
+}
+.sprint-actions {
+
+  color: #facc15;
+  cursor: pointer;
+
+
+}
+.sprint-container {
+  max-width: 1200px;
+}
+
+.sprint-sprints mat-card {
+  margin-bottom: 0px;
+}
+
+.sprint-filters {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+mat-panel-title{
+  padding-left: 15px;
+}
+.task-details-icon{
+  color: #facc15;
+}
+.task-sprint-icon{
+  color: #facc15;
+  margin-left: 3px;
+}
+.date-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.date-box {
+  width: 30%;
+  padding: 2px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.label {
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+  font-size: x-small;
+}
+
+.value {
+  margin-top: 5px;
+  color: #000000;
+  font-size:x-small;
+}
+
+.start-date {
+  border-color: #facc15;
+}
+.created-date {
+  border-color: #00095E;
+}
+
+.end-date {
+  border-color: #FA7070;
+}
+.blue-icon {
+  color: #00095E;
+}
+.yellow-icon{
+  color: #facc15;
+
+}
+.red-icon {
+  color: #FA7070;
+}
+mat-panel-title{
+  color: #00095E;
+}
+
+.add-task {
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+}
+.user-info-container {
+  align-items: center;
+}
+.associate-user{
+  color: #facc15;
+  align-items: center;
+margin-left: 2px;
+
+}
+
+
+.sprint-menu-text{
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+font-size: 16px;
+color: #00095E;
+font-weight:400;
+
+}
+.selected-sprint {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.sprint-name {
+  flex: 1;
+
+}
+
+.sprint-state {
+  margin-left: 10px;
+}
+.sprint-details {
+  display: flex;
+  align-items: center;
+}
+
+
+
+.sprint-state {
+
+  background-color: #f7fafc;
+  color: #000;
+  font-size: 0.6rem;
+  font-weight: 400;
+  padding: 0.25rem 0.25rem;
+  border-radius: 9999px;
+  width: 75px;
+  text-align: center;
+}
+.association-button{
+  margin-left: 20px;
+}
+.close-button{
+  margin-right: 20px;
+}
+.association {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.buttongroup {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-size: 12px;
+}
+.user-menu-text{
+
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+font-size: 16px;
+color: #00095E;
+font-weight:400;
+}
+.username{
+margin-left: 20px;
+
+color: #00095E;
+
+}
+
+
+
+#file-input {
+  display: none;
+}
+
+
+.task-title{
+  font-size: 14px;
+}
+.sprint-tasks-info {
+  border: 1px solid #f7fafc;
+  border-radius: 5px;
+  padding: 10px;
+  max-height: 50px;
+}
+.task-icons{
+  align-items: center;
+}
+.association-sprint-name{
+  font-size: 14px;
+}
+.state-icon{
+  margin-left: 5px;
+}
+.same-line {
+  display: flex;
+  align-items: center;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 576px) {
+  .sprint-tasks-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sprint-tasks-info .col-sm-5,
+  .sprint-tasks-info .col-sm-3,
+  .sprint-tasks-info .col-sm-1 {
+    flex: 1 1 100%;
+    max-width: 100%;
+    padding: 0.5rem 0;
+  }
+
+  .sprint-tasks-info .col-sm-3 .user-info-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .sprint-tasks-info .col-sm-1 {
+    display: flex;
+    justify-content: flex-start;
+  }
+}

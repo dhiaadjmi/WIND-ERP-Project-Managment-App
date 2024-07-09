@@ -1,0 +1,31 @@
+<mat-card class="add-sprint-card">
+  <button mat-icon-button class="close-button" aria-label="Fermer" (click)="closeDialog()">
+    <mat-icon>close</mat-icon>
+  </button><br>
+  <mat-card-title class="add-sprint-title">Modifier le backlog de projet </mat-card-title>
+  <mat-card-content>
+    <form class="m-t-30 form-row" #updateBacklogForm="ngForm">
+
+      <div class="form-column">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Nom</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <input matInput name="name"  placeholder="Nom"  [(ngModel)]="backlog.name" required />
+        </mat-form-field>
+      </div>
+
+      <div class="form-column">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Description</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <textarea matInput name="description"  placeholder="Description" [(ngModel)]="backlog.description" required></textarea>
+        </mat-form-field>
+      </div>
+
+
+    </form>
+    <div mat-dialog-actions class="centered-buttons">
+      <button mat-button color="primary" type="submit"  (click)="updateBacklog()">Mettre à jour</button>
+
+      <button mat-button class="annuler" (click)="closeDialog()">Annuler</button>
+    </div>
+  </mat-card-content>
+</mat-card>

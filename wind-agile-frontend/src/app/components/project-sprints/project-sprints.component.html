@@ -1,0 +1,210 @@
+<br><div class="sprint">
+  <div class="add-sprint d-flex justify-content-center">
+    <button mat-flat-button color="primary" matTooltip="Ajouter un sprint" *ngIf="userRole !== 'EMPLOYEE'"   (click)="openAddSprintDialog()">
+      Ajouter un sprint &nbsp;&nbsp;<i class="fas fa-plus" style="color: #fefefe;"></i>
+    </button>
+  </div>
+  <div class="sprint-filters">
+    <mat-button-toggle-group aria-label="Sprint Filters" (change)="onFilterChange($event)" [value]="selectedFilter">
+      <mat-button-toggle value="ALL" class="btn-outline-primary" [style.color]="selectedFilter === 'ALL' ? '#00095E' : 'inherit'">Tout</mat-button-toggle>
+      <mat-button-toggle value="IN_PROGRESS" class="btn-outline-primary" [style.color]="selectedFilter === 'IN_PROGRESS' ? '#86B6F6' : 'inherit'">En cours</mat-button-toggle>
+      <mat-button-toggle value="ON_HOLD" class="btn-outline-primary" [style.color]="selectedFilter === 'ON_HOLD' ? '#facc15' : 'inherit'">En attente</mat-button-toggle>
+      <mat-button-toggle value="REPORTED" class="btn-outline-primary" [style.color]="selectedFilter === 'REPORTED' ? '#00095E' : 'inherit'">Reporté</mat-button-toggle>
+
+      <mat-button-toggle value="COMPLETED" class="btn-outline-primary" [style.color]="selectedFilter === 'COMPLETED' ? '#A1EEBD' : 'inherit'">Terminé</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <div class="sprint-sprints" *ngFor="let sprint of filteredSprints">
+    <mat-card class="sprint-container">
+      <mat-card-content class="b-t-1">
+        <div class="d-flex justify-content-between">
+          <div class="todo-content" [ngClass]="{
+            'border-yellow': sprint.state === 'ON_HOLD',
+            'border-blue': sprint.state === 'IN_PROGRESS',
+            'border-dark-blue': sprint.state === 'REPORTED',
+            'border-green': sprint.state === 'COMPLETED'
+          }">
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="sprint-header">
+                <h4 class="todo-title" [ngStyle]="{
+                    'color': sprint.state === 'ON_HOLD' ? '#facc15' :
+                        sprint.state === 'IN_PROGRESS' ? '#86B6F6' :
+                        sprint.state === 'REPORTED' ? '#00095E' :
+                        sprint.state === 'COMPLETED' ? '#A1EEBD' : (sprint.state !== 'ON_HOLD' && sprint.state !== 'IN_PROGRESS' && sprint.state !== 'REPORTED' && sprint.state !== 'CANCELED' && sprint.state !== 'COMPLETED' ? '#000' : 'inherit')
+                }">{{ sprint.displayName }}</h4>
+            </div>
+
+
+            <div *ngIf="sprint.state" class="todo-status todo-status-align-end" [ngStyle]="{
+              'background-color': sprint.state === 'ON_HOLD' ? '#facc15' :
+              sprint.state === 'IN_PROGRESS' ? '#86B6F6' :
+              sprint.state === 'REPORTED' ? '' :
+              sprint.state === 'COMPLETED' ? '#A1EEBD' : 'transparent',
+              'color': sprint.state === 'REPORTED' ? '#00095E' : 'initial'
+            }">
+
+{{ stateTranslations[sprint.state] }}
+<ng-container *ngIf="sprint.state === 'ON_HOLD'">
+  <i class="state-icon fas fa-clock"></i>
+</ng-container>
+<ng-container *ngIf="sprint.state === 'IN_PROGRESS'">
+  <i class="state-icon fas fa-hourglass-half"></i>
+</ng-container>
+<ng-container *ngIf="sprint.state === 'REPORTED'">
+  <i class="state-icon fas fa-stop-circle"></i>
+</ng-container>
+<ng-container *ngIf="sprint.state === 'COMPLETED'">
+  <i class="state-icon fas fa-check-circle"></i>
+</ng-container>
+</div>
+
+            </div>
+            <div class="sprint-actions d-flex align-items-end justify-content-end">
+              <mat-icon matTooltip="Démarrer le sprint" class="action-icon" *ngIf="userRole !== 'EMPLOYEE' && !sprint.defaultSprint && sprint.state !== 'IN_PROGRESS'" (click)="startSprint(sprint.id)">play_circle_outline</mat-icon>
+              <mat-icon matTooltip="Modifier" class="action-icon" *ngIf="userRole !== 'EMPLOYEE' && !sprint.defaultSprint"  (click)="openUpdateSprintDialog(sprint.id)">autorenew</mat-icon>
+              <mat-icon matTooltip="Supprimer" class="action-icon"*ngIf="userRole !== 'EMPLOYEE' && !sprint.defaultSprint " (click)="onDeleteSprint(sprint.id)" >delete</mat-icon>
+              <mat-icon matTooltip="Visibilité" class="action-icon" (click)="viewSprintDetails(sprint.id)" *ngIf="sprint.state === 'IN_PROGRESS'">zoom_out_map</mat-icon>
+            </div>
+            <p class="todo-description">{{ sprint.objectif }}</p>
+
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-expansion-panel *ngIf="!sprint.defaultSprint">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <i class="far fa-clock"></i>&nbsp;&nbsp;<b>Durée du sprint</b>
+          </mat-panel-title>        </mat-expansion-panel-header>
+        <mat-card-content >
+          <mat-card-content>
+            <div class="date-container">
+              <div class="date-box created-date">
+                <div class="icon blue-icon"><i class="far fa-calendar-alt"></i></div>
+                <div class="label">Date de création</div>
+                <div class="value">{{ sprint.createdDate | date: 'mediumDate' }}</div>
+              </div>
+              <div class="date-box start-date" *ngIf="sprint.state === IN_PROGRESS">
+                <div class="icon yellow-icon"> <i class="state-icon fas fa-hourglass-half"></i></div>
+                <div class="label">Date de lancement</div>
+                <div class="value">{{ sprint.startDate | date: 'mediumDate' }}</div>
+              </div>
+              <div class="date-box end-date">
+                <div class="icon red-icon"><i class="far fa-calendar-alt"></i></div>
+                <div class="label">Date de fin</div>
+                <div class="value">{{ sprint.endDate | date: 'mediumDate' }}</div>
+              </div>
+            </div>
+          </mat-card-content>
+
+        </mat-card-content>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <i class="fas fa-tasks"></i>&nbsp;&nbsp;<b>Tâches du sprint</b>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="add-task d-flex justify-content-center">
+          <button mat-flat-button color="primary" matTooltip="Ajouter une tache" *ngIf="userRole !== 'EMPLOYEE'" (click)="openAddTaskDialog(sprint.id)">
+            <i class="fas fa-plus" style="color: #fefefe;"></i>
+          </button>
+        </div>
+        <mat-card-content *ngFor="let task of sprint.tasks">
+          <div class="sprint-tasks-info row">
+            <div class="col-sm-5 col-12">
+              <div class="task-title">{{ task.name }}</div>
+            </div>
+            <div class="col-sm-3 col-12">
+              <div *ngIf="task.state" class="todo-status-task" [ngStyle]="{
+                'background-color': task.state === 'ON_HOLD' ? '#facc15' :
+                                    task.state === 'IN_PROGRESS' ? '#86B6F6' :
+                                    task.state === 'CANCELED' ? '#FA7070' :
+                                    task.state === 'COMPLETED' ? '#A1EEBD' : 'transparent'
+              }">
+  {{ taskStateTranslations[task.state] }}
+  <ng-container *ngIf="task.state === 'ON_HOLD'">
+    <i class="state-icon fas fa-clock"></i>
+  </ng-container>
+  <ng-container *ngIf="task.state === 'IN_PROGRESS'">
+    <i class="state-icon fas fa-hourglass-half"></i>
+  </ng-container>
+  <ng-container *ngIf="task.state === 'CANCELED'">
+    <i class="state-icon fas fa-times-circle"></i>
+  </ng-container>
+  <ng-container *ngIf="task.state === 'COMPLETED'">
+    <i class="state-icon fas fa-check-circle"></i>
+  </ng-container>
+</div>
+
+            </div>
+            <div class="col-sm-3 col-12">
+              <div class="user-info-container" (click)="openUserDetails(usersInfo[task.userId])">
+                <div *ngIf="usersInfo[task.userId]" class="user-avatar">
+                  <img [src]="usersInfo[task.userId].profileImageUrl" alt="UserAvatar" class="rounded-circle object-cover" width="35" height="35">
+                </div>
+              </div>
+              <mat-icon class="associate-user" matTooltip="Associé à un user" *ngIf="userRole !== 'EMPLOYEE' &&!task.userId" [matMenuTriggerFor]="userMenu" (click)="selectedTaskId = task.id">person_add</mat-icon>
+              <mat-menu #userMenu="matMenu">
+                <div class="sprint-menu-text">Sélectionner un utilisateur</div>
+                <div *ngFor="let user of teamInfo.users" class="same-line">
+                  <button mat-menu-item (click)="$event.stopPropagation(); selectUser(user.id)">
+                    <div class="user-info">
+                      <img [src]="user.profileImageUrl" alt="User Avatar" class="user-icon-selection rounded-circle object-cover mr-2" width="35" height="35">
+                      <span class="username">{{ user.firstname }} {{ user.lastname }}</span>
+                    </div>
+                  </button>
+                </div>
+                <div class="buttongroup">
+                  <button class="association-button" mat-flat-button style=" background-color:#00095E" matTooltip="Valider l'association" (click)="associateToUser(selectedTaskId, selectedUserId)">
+                    <i class="fas fa-check" style="color: #fefefe;"></i>
+                  </button>
+                  <button class="close-button" mat-flat-button color="primary" matTooltip="Annuler">
+                    <i class="fas fa-times" style="color: #fefefe;"></i>
+                  </button>
+                </div>
+              </mat-menu>
+            </div>
+            <div class="col-sm-1 col-12">
+              <div class="task-icons">
+                <mat-icon matTooltip="Visibilité" class="task-details-icon" (click)="openTaskDetails(task.id)">zoom_out_map</mat-icon>
+            <!--  <mat-icon matTooltip="Associé à un sprint" class="task-sprint-icon" *ngIf="userRole !== 'EMPLOYEE' && task.sprints?.length === 1" [matMenuTriggerFor]="sprintMenu" (click)="selectedTaskId = task.id">publish</mat-icon>-->
+              </div>
+     <!--        <mat-menu #sprintMenu="matMenu">
+                <div class="sprint-menu-text">Sélectionner un sprint</div>
+                <div *ngFor="let sprint of sprints">
+                  <button *ngIf="!sprint.defaultSprint" mat-menu-item (click)="$event.stopPropagation(); selectSprint(sprint.id, selectedTaskId)">
+                    <div class="selected-sprint">
+                      <div class="sprint-name">{{ sprint.name }}</div>
+                      <span *ngIf="sprint.state" class="sprint-state" [ngStyle]="{
+                        'background-color': sprint.state === 'ON_HOLD' ? '#facc15' :
+                                            sprint.state === 'IN_PROGRESS' ? '#86B6F6' :
+                                            sprint.state === 'CANCELED' ? '#FA7070' :
+                                            sprint.state === 'COMPLETED' ? '#A1EEBD' : 'transparent'
+                      }">{{ sprint.state }}</span>
+                    </div>
+                  </button>
+                </div>
+                <div class="buttongroup">
+               <button class="association-button" mat-flat-button style=" background-color:#00095E" matTooltip="Valider l'association" (click)="associateToSprint(selectedTaskId, selectedSprintId)">
+                    <i class="fas fa-check" style="color: #fefefe;"></i>
+                  </button>
+
+                  <button class="close-button" mat-flat-button color="primary" matTooltip="Annuler">
+                    <i class="fas fa-times" style="color: #fefefe;"></i>
+                  </button>
+                </div>
+              </mat-menu>
+              -->
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-expansion-panel>
+
+
+
+
+
+
+    </mat-card>
+  </div>
+</div>

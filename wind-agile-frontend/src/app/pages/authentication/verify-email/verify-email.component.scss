@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.message {
+  text-align: center;
+  padding: 50px;
+  background-color: #e0ffe0;
+  border: 1px solid #80ff80;
+  border-radius: 5px;
+  color: #006600;
+  margin: 20px;
+
+}

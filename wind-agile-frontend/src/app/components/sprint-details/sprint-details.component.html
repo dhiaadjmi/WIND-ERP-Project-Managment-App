@@ -1,0 +1,63 @@
+
+<div class="sprint-details">
+  <mat-card>
+    <div class="d-flex justify-content-center flex-column align-items-center">
+      <mat-card-title class="sprint-name mb-3">{{ sprint.name }}</mat-card-title>
+      <mat-card-subtitle class="objectif"><i class="objectif-icon fas fa-crosshairs"></i>
+        {{ sprint.objectif }}</mat-card-subtitle>
+    </div>
+    <div class="d-flex justify-content-center">
+      <div *ngIf="sprint.state" class="todo-status d-flex align-items-center" [ngStyle]="{
+        'background-color': sprint.state === 'ON_HOLD' ? '#facc15' :
+                            sprint.state === 'IN_PROGRESS' ? '#86B6F6' :
+                            sprint.state === 'CANCELED' ? '#FA7070' :'transparent'
+      }">
+        <ng-container *ngIf="sprint.state === 'ON_HOLD'">
+          <span class="sprint-state-view mr-1">{{ sprintStateTranslations[sprint.state] }}</span> <i class="state-icon fas fa-hourglass-half"></i>
+        </ng-container>
+        <ng-container *ngIf="sprint.state === 'IN_PROGRESS'">
+          <span class="sprint-state-view mr-1">{{ sprintStateTranslations[sprint.state] }}</span> <i class="state-icon fas fa-hourglass-half"></i>
+        </ng-container>
+
+        <ng-container *ngIf="sprint.state === 'COMPLETED'">
+          <span class="sprint-state-view mr-1">{{ sprintStateTranslations[sprint.state] }}</span> <i class="state-icon fas fa-check-circle"></i>
+        </ng-container>
+    </div>
+
+    </div>
+
+
+
+
+
+    <mat-card-content>
+
+      <div class="date-container">
+        <div class="date-box created-date">
+          <div class="icon blue-icon"><i class="far fa-calendar-alt"></i></div>
+          <div class="label">Date de création</div>
+          <div class="value">{{ sprint.createdDate | date: 'mediumDate' }}</div>
+        </div>
+            <div class="date-box start-date">
+          <div class="icon yellow-icon ">        <i class="state-icon fas fa-hourglass-half"></i>
+          </div>
+          <div class="label">Date de lacement</div>
+          <div class="value">{{ sprint.startDate | date: 'mediumDate' }}</div>
+        </div>
+        <div class="date-box end-date">
+          <div class="icon red-icon"><i class="far fa-calendar-alt"></i></div>
+          <div class="label">Date de fin</div>
+          <div class="value">{{ sprint.endDate | date: 'mediumDate' }}</div>
+        </div>
+      </div>
+    </mat-card-content>
+
+  </mat-card>
+
+  <app-tasks-list [sprintId]="sprintId" [teamId]="teamId"></app-tasks-list>
+
+  <app-timeline [sprintId]="sprintId" ></app-timeline>
+
+
+
+</div>

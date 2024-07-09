@@ -1,0 +1,150 @@
+.backlog-sprints {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+
+}
+
+.backlog-card {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.backlog-header {
+  color: #facc15;
+  margin-bottom: 16px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+
+.backlog-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #facc15;
+  margin-bottom: 16px;
+
+}
+
+mat-card {
+  border: 1px solid #ccc;
+  box-shadow: none;
+  margin-bottom: 16px;
+  max-width: 1000px;
+  width: 95%;
+}
+
+
+.todo-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.todo-container:hover {
+  background-color: #edf2f7;
+}
+
+
+.todo-content {
+  border-left: 4px solid #e2e8f0;
+  padding-left: 1rem;
+  flex: 1;
+}
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+}
+.border-yellow {
+  border-color: #facc15;
+}
+
+.border-blue {
+  border-color: #86B6F6;
+}
+
+.border-red {
+  border-color: #FA7070;
+}
+
+.border-green {
+  border-color: #A1EEBD;
+}
+
+
+
+
+.todo-title {
+  color: #000;
+
+  font-weight: bold;
+}
+
+.todo-description {
+  color: #000;
+  max-height: 1.5rem;
+  overflow-y: hidden;
+}
+
+.todo-status {
+  background-color: #f7fafc;
+  color: #000;
+  font-size: 0.6rem;
+  font-weight: 400;
+  padding: 0.25rem 0.25rem;
+  border-radius: 9999px;
+}
+
+.todo-status-align-end {
+  align-self: flex-end;
+}
+
+
+
+
+
+.add-icon {
+  font-size: 32px;
+  color: #facc15;
+  cursor: pointer;
+  margin: 0 auto;
+  display: block;
+}
+.backlog-actions {
+
+  color: #facc15;
+  cursor: pointer;
+
+
+}
+.backlog-container {
+  max-width: 1200px;
+  max-height: 200px;
+}
+
+.backlog-sprints mat-card {
+  margin-bottom: 0px;
+}
+.text-yellow {
+  color: yellow;
+}
+
+.text-blue {
+  color: #C4E4FF;
+}
+
+.text-red {
+  color: red;
+}
+
+.text-green {
+  color: green;
+}

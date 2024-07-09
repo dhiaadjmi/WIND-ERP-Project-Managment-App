@@ -1,0 +1,154 @@
+<h1 class="task-title">
+  <i class="task-icon fas fa-tasks"></i>
+  Mes tâches
+</h1>
+
+<span class="subtitle">
+  Mes tâches selon les noms de mes projets:
+</span>
+<div class="task-list">
+
+<div class="project-buttons-container">
+  <div class="project-buttons">
+    <button mat-button class="project-button" (click)="showAllTasks()" [class.active]="selectedProjectId === null">
+      Tout mes tâches
+    </button>
+    <button mat-button *ngFor="let project of projects" class="project-button" (click)="onProjectClick(project.id)" [class.active]="selectedProjectId === project.id">
+      {{ project.nom }}
+   </button>
+  </div>
+</div>
+
+<ng-container *ngIf="selectedProjectId === null; else projectTasks">
+
+  <mat-card class="card-preview">
+    <div class="task-list">
+      <div class="task-filters">
+        <mat-button-toggle-group aria-label="Todo Filters" (change)="onFilterChange($event)">
+          <mat-button-toggle value="ALL" class="btn-outline-primary" [style.color]="selectedFilter === 'ALL' ? '#00095E' : 'inherit'">Tout</mat-button-toggle>
+          <mat-button-toggle value="IN_PROGRESS" class="btn-outline-primary" [style.color]="selectedFilter === 'IN_PROGRESS' ? '#86B6F6' : 'inherit'">En cours</mat-button-toggle>
+          <mat-button-toggle value="ON_HOLD" class="btn-outline-primary" [style.color]="selectedFilter === 'ON_HOLD' ? '#facc15' : 'inherit'">En attente</mat-button-toggle>
+          <mat-button-toggle value="CANCELED" class="btn-outline-primary" [style.color]="selectedFilter === 'CANCELED' ? '#FA7070' : 'inherit'">Annulé</mat-button-toggle>
+          <mat-button-toggle value="COMPLETED" class="btn-outline-primary" [style.color]="selectedFilter === 'COMPLETED' ? '#A1EEBD' : 'inherit'">Terminé</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+
+      <div class="task-tasks">
+        <mat-card class="task-container" *ngFor="let task of filteredTasks">
+          <mat-card-content class="b-t-1">
+            <div class="d-flex justify-content-between">
+              <div class="todo-content" [ngClass]="{
+                  'border-yellow': task.state === 'ON_HOLD',
+                  'border-blue': task.state === 'IN_PROGRESS',
+                  'border-red': task.state === 'CANCELED',
+                  'border-green': task.state === 'COMPLETED'
+              }" cdkDrag>
+                <div class="d-flex align-items-center justify-content-between w-100">
+                  <div>
+                    <h4 class="todo-title">{{ task.name }}</h4>
+                  </div>
+                  <div class="d-flex align-items-center">
+                    <div *ngIf="task.state" class="todo-status" [ngStyle]="{
+                      'background-color': task.state === 'ON_HOLD' ? '#facc15' :
+                      task.state === 'IN_PROGRESS' ? '#86B6F6' :
+                      task.state === 'CANCELED' ? '#FA7070' :
+                      task.state === 'COMPLETED' ? '#A1EEBD' : 'transparent'
+                  }">
+                    {{ taskStateTranslations[task.state] }}
+
+                      <ng-container *ngIf="task.state === 'ON_HOLD'">
+                        <i class="state-icon fas fa-clock"></i>
+                      </ng-container>
+                      <ng-container *ngIf="task.state === 'IN_PROGRESS'">
+                        <i class="state-icon fas fa-hourglass-half"></i>
+                      </ng-container>
+                      <ng-container *ngIf="task.state === 'CANCELED'">
+                        <i class="state-icon fas fa-times-circle"></i>
+                      </ng-container>
+                      <ng-container *ngIf="task.state === 'COMPLETED'">
+                        <i class="state-icon fas fa-check-circle"></i>
+                      </ng-container>
+                    </div>
+                    <div class="task-actions d-flex align-items-center ml-3">
+                      <mat-icon matTooltip="Modifier" class="action-icon" (click)="openUpdateTaskDialog(task.id)">autorenew</mat-icon>
+                      <mat-icon matTooltip="Visibilité" class="action-icon" (click)="openTaskDetails(task.id)">zoom_out_map</mat-icon>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </mat-card>
+
+</ng-container>
+
+
+
+
+
+<ng-template #projectTasks>
+  <mat-card class="card-preview">
+    <div class="task-list">
+      <div class="task-tasks">
+
+        <div class="task-filters">
+          <mat-button-toggle-group aria-label="Todo Filters" (change)="onFilterChange($event)">
+            <mat-button-toggle value="ALL" class="btn-outline-primary" [style.color]="selectedFilter === 'ALL' ? '#00095E' : 'inherit'">ALL</mat-button-toggle>
+            <mat-button-toggle value="IN_PROGRESS" class="btn-outline-primary" [style.color]="selectedFilter === 'IN_PROGRESS' ? '#86B6F6' : 'inherit'">IN_PROGRESS</mat-button-toggle>
+            <mat-button-toggle value="ON_HOLD" class="btn-outline-primary" [style.color]="selectedFilter === 'ON_HOLD' ? '#facc15' : 'inherit'">ON_HOLD</mat-button-toggle>
+            <mat-button-toggle value="CANCELED" class="btn-outline-primary" [style.color]="selectedFilter === 'CANCELED' ? '#FA7070' : 'inherit'">CANCELED</mat-button-toggle>
+            <mat-button-toggle value="COMPLETED" class="btn-outline-primary" [style.color]="selectedFilter === 'COMPLETED' ? '#A1EEBD' : 'inherit'">COMPLETED</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+        <mat-card class="task-container" *ngFor="let task of filteredTasksByProject">
+          <mat-card-content class="b-t-1">
+            <div class="d-flex justify-content-between">
+              <div class="todo-content" [ngClass]="{
+                  'border-yellow': task.state === 'ON_HOLD',
+                  'border-blue': task.state === 'IN_PROGRESS',
+                  'border-red': task.state === 'CANCELED',
+                  'border-green': task.state === 'COMPLETED'
+              }" cdkDrag>
+                <div class="d-flex align-items-center justify-content-between w-100">
+                  <div>
+                    <h4 class="todo-title">{{ task.name }}</h4>
+                  </div>
+                  <div class="d-flex align-items-center">
+                    <div *ngIf="task.state" class="todo-status" [ngStyle]="{
+                      'background-color': task.state === 'ON_HOLD' ? '#facc15' :
+                      task.state === 'IN_PROGRESS' ? '#86B6F6' :
+                      task.state === 'CANCELED' ? '#FA7070' :
+                      task.state === 'COMPLETED' ? '#A1EEBD' : 'transparent'
+                  }">
+                      {{ task.state }}
+                      <ng-container *ngIf="task.state === 'ON_HOLD'">
+                        <i class="state-icon fas fa-clock"></i>
+                      </ng-container>
+                      <ng-container *ngIf="task.state === 'IN_PROGRESS'">
+                        <i class="state-icon fas fa-hourglass-half"></i>
+                      </ng-container>
+                      <ng-container *ngIf="task.state === 'CANCELED'">
+                        <i class="state-icon fas fa-times-circle"></i>
+                      </ng-container>
+                      <ng-container *ngIf="task.state === 'COMPLETED'">
+                        <i class="state-icon fas fa-check-circle"></i>
+                      </ng-container>
+                    </div>
+                    <div class="task-actions d-flex align-items-center ml-3">
+                      <mat-icon matTooltip="Modifier" class="action-icon" (click)="openUpdateTaskDialog(task.id)">autorenew</mat-icon>
+                      <mat-icon matTooltip="Visibilité" class="action-icon" (click)="openTaskDetails(task.id)">zoom_out_map</mat-icon>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </mat-card>
+</ng-template>
+

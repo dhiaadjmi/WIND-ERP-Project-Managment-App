@@ -1,0 +1,76 @@
+mat-card-title {
+  color: #facc15;
+  text-align: center;
+  padding-top: 20px; /* Ajuster la marge supérieure du titre */
+  padding-bottom: 0px; /* Ajuster la marge inférieure du titre */
+}
+mat-label{
+  color: #00095E;
+}
+
+
+.image-profile-edit {
+  margin-top: -40px;
+  margin-bottom: 40px;
+   /* Ajuster l'espace entre l'image et le formulaire */
+}
+/**
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.form-column {
+  flex: 1;
+  margin-right: 40px;
+}*/
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form-column {
+  flex-basis: calc(50% - 20px);
+  margin-right: 20px;
+}
+
+@media screen and (max-width: 767px) {
+  .form-column {
+    flex-basis: calc(100% - 20px);
+    margin-right: 0;
+  }
+
+  .form-column:nth-child(odd) {
+    margin-right: 20px;
+  }
+
+  .form-column:nth-child(even) {
+    margin-left: 20px;
+  }
+}
+
+.button-update-profile{
+ text-align:center ;
+ justify-content: center;
+ height: 30px;
+}
+
+.change-profile-text {
+  display: none; /* Par défaut, masquez le texte */
+}
+
+.profile-image:hover + .change-profile-text {
+  display: block;
+  position: absolute;
+  top: 50%; /* Ajustez cette valeur pour déplacer le texte vers le bas */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #facc15;
+  padding: 8px 16px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+

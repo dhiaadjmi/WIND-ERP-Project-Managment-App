@@ -1,0 +1,26 @@
+<mat-card class="add-backlog-card">
+  <button mat-icon-button class="close-button" aria-label="Fermer" (click)="closeDialog()">
+    <mat-icon>close</mat-icon>
+  </button><br>
+  <mat-card-title class="add-backlog-title">Créer un nouveau backlog de projet </mat-card-title>
+  <mat-card-content>
+    <form class="m-t-30 form-row" #addBacklogForm="ngForm">
+
+      <div class="form-column">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Nom</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <input matInput name="name" placeholder="Nom" ngModel required />
+        </mat-form-field>
+      </div>
+
+      <div class="form-column">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Description</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <textarea matInput name="description" placeholder="Description" ngModel required></textarea>
+        </mat-form-field>
+      </div>
+
+      <button mat-flat-button color="primary" class="w-100" (click)="createBacklog(projectId, addBacklogForm)">Créer backlog</button>
+    </form>
+  </mat-card-content>
+</mat-card>

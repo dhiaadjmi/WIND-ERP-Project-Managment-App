@@ -1,0 +1,103 @@
+.todo-status {
+  background-color: #f7fafc;
+  color: #000;
+  font-size: 0.8rem;
+  font-weight: 400;
+  padding: 0.25rem 0.25rem;
+  border-radius: 9999px;
+  text-align: center;
+  min-width: 90px;
+  max-width: 100px;
+margin-bottom: 10px;
+
+
+}
+.sprint-name{
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+.objectif{
+  margin-bottom: 20px;
+  margin-right: 10px;
+}
+.objectif-icon{
+  font-size: 20px;
+}
+.date-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.date-box {
+  width: 30%;
+  padding: 2px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.label {
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+  font-size: x-small;
+}
+
+.value {
+  margin-top: 5px;
+  color: #000000;
+  font-size:x-small;
+}
+.start-date {
+  border-color: #facc15;
+}
+
+
+.created-date {
+  border-color: #00095E;
+}
+
+.end-date {
+  border-color: #FA7070;
+}
+.yellow-icon {
+  margin-top: 5px;
+
+  color: #facc15;
+}
+.blue-icon {
+  margin-top: 5px;
+  color: #00095E;
+}
+
+.red-icon {
+  margin-top: 5px;
+
+  color: #FA7070;
+}
+mat-card-title {
+  color: #00095E;
+  text-align: center;
+}
+mat-card-subtitle{
+  color: #000000;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+}
+
+.state-icon{
+  margin-left: 8px;
+}
+.sprint-state-view{
+  margin-left: 5px;
+}

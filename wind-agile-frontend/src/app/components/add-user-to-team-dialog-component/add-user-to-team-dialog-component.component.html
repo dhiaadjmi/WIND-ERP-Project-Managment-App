@@ -1,0 +1,32 @@
+
+<div mat-dialog-content>
+  <button mat-icon-button class="close-button" aria-label="Fermer" (click)="closeDialog()">
+    <mat-icon>close</mat-icon>
+  </button><br>
+  <mat-card-title> Ajouter un membre à l'équipe</mat-card-title>
+
+  <form [formGroup]="addUserToTeamForm">
+    <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Membres</mat-label>
+    <mat-form-field appearance="outline" class="w-100" color="primary">
+      <mat-select formControlName="selectedEmployees" placeholder="Sélectionnez un membre">
+        <mat-option *ngFor="let employee of employees" [value]="employee.id">
+          {{ employee.firstname }} {{ employee.lastname }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+</div>
+
+<div mat-dialog-actions class="centered-buttons">
+ <button mat-button color="primary"  [disabled]="!addUserToTeamForm.valid" (click)="addUserToTeam(teamId)">
+    Ajouter l'utilisateur
+  </button>
+ <!--
+  <button mat-flat-button color="primary" matTooltip="Info about the action" (click)="addUserToTeam(teamId)">
+    Ajouter un membre  &nbsp;&nbsp;<i class="fas fa-user-plus " style="color: #fefefe;"></i>
+  </button>
+    -->
+</div>
+
+

@@ -1,0 +1,84 @@
+<mat-card class="add-task-card">
+  <button mat-icon-button class="close-button" aria-label="Fermer" (click)="closeDialog()">
+    <mat-icon>close</mat-icon>
+  </button><br>
+  <mat-card-title class="add-task-title">Ajouter une nouvelle Tâche</mat-card-title>
+
+  <mat-card-content>
+    <form class="m-t-30 form-row" #addTaskForm="ngForm">
+
+      <div class="form-column">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Nom de tache </mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <input matInput name="name" [(ngModel)]="newTask.name" placeholder="Nom" required />
+        </mat-form-field>
+      </div>
+      <div class="form-column">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Description</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <input matInput name="description" [(ngModel)]="newTask.description" placeholder="Description" required />
+        </mat-form-field>
+      </div>
+
+
+
+      <div class="form-column">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Date de début</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <input matInput [matDatepicker]="startDatePicker" name="startDate" [(ngModel)]="newTask.startDate" placeholder="Date de début" required />
+          <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #startDatePicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="form-column">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Estimation (en jours)</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <input matInput type="number" name="estimation" [(ngModel)]="newTask.estimation" placeholder="Estimation" required />
+        </mat-form-field>
+      </div>
+
+      <div class="form-column">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Priorité</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <mat-select [(ngModel)]="newTask.priority" name="priority" required>
+            <mat-option value="LOW">Faible</mat-option>
+            <mat-option value="MEDIUM">Moyenne</mat-option>
+            <mat-option value="HIGH">Élevée</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="form-column">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">État</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <mat-select [(ngModel)]="newTask.state" name="state" required>
+            <mat-option value="IN_PROGRESS" [ngStyle]="{'background-color': '#86B6F6'}">En cours</mat-option>
+            <mat-option value="ON_HOLD" [ngStyle]="{'background-color': '#facc15'}">En attente</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <!--
+      <div class="form-column">
+        <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Utilisateur</mat-label>
+        <mat-form-field appearance="outline" class="w-100" color="primary">
+          <mat-select [(ngModel)]="userId" name="userId" required>
+            <mat-option *ngFor="let user of teamInfo.users" [value]="user.id">
+              <span class="user-info">
+                <img [src]="user.profileImageUrl" alt="User Avatar" class="rounded-circle object-cover mb-2" width="35">
+                <span class="username">{{ user.firstname }} {{ user.lastname }}</span>
+              </span>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+    -->
+
+
+
+
+
+      <button mat-flat-button color="primary" class="w-100" (click)="addTask()">Ajouter une Tache</button>
+    </form>
+  </mat-card-content>
+</mat-card>

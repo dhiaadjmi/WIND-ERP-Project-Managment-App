@@ -1,0 +1,328 @@
+.task-details {
+  margin-left: 20px;
+  margin-bottom: 20px;
+
+  padding: 10px;
+}
+
+.task-status {
+  background-color: #f7fafc;
+  color: #000;
+  font-size: 0.6rem;
+  font-weight: 500;
+  padding: 0.5rem 0.5rem;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+
+.task-title {
+  font-weight: bolder;
+  color: #00095E;
+}
+
+.user-details {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+
+.state-icon{
+  margin-left: 5px;
+
+}
+.avatar img {
+  border-radius: 50%;
+}
+
+.icon {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.start-date {
+  border-color: #00095E;
+}
+
+.end-date {
+  border-color: #FA7070;
+}
+
+.blue-icon {
+  color: #00095E;
+}
+
+.red-icon {
+  color: #FA7070;
+}
+
+.value {
+  margin-left: 10px;
+}
+
+.date-box {
+  margin-left: 18px;
+}
+
+.description {
+  margin-left: 15px;
+}
+.desciption-icon {
+  color: #00095E;
+  margin-right: 10px;
+}
+.username {
+  margin-left: 10px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.dates {
+  margin-top: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.task-image-expanded {
+  width: 100%;
+  height: auto;
+}
+
+.image-item {
+  position: relative;
+}
+
+
+
+.task-image {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.btn-link {
+  padding: 0;
+}
+
+.hover-message {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #facc15;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  display: none;
+}
+
+.image-item:hover .hover-message {
+  display: block;
+}
+
+.add-image-button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.image-controls {
+  display: flex;
+  align-items: center;
+}
+
+.image-controls button {
+  margin: 0 5px;
+}
+
+
+.task-images-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Assurez-vous que le conteneur occupe toute la hauteur */
+}
+
+.next-preview-image{
+  background-color: #facc15;
+}
+
+
+
+
+
+
+
+
+
+.panel {
+  margin-bottom: 15px;
+}
+
+.panel .panel-footer,
+.panel > :last-child {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.panel .panel-heading,
+.panel > :first-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.panel-body {
+  padding: 25px 20px;
+}
+
+.media-block .media-body {
+  display: block;
+  overflow: hidden;
+}
+
+.middle .media-left,
+.middle .media-right,
+.middle .media-body {
+  vertical-align: middle;
+}
+
+.thumbnail {
+  border-radius: 0;
+  border-color: #e9e9e9;
+}
+
+.tag:not(.label) {
+  background-color: #fff;
+  padding: 6px 12px;
+  border-radius: 2px;
+  border: 1px solid #cdd6e1;
+  font-size: 12px;
+  line-height: 1.42857;
+  transition: all .15s;
+}
+
+.text-muted,
+a.text-muted:hover,
+a.text-muted:focus {
+  color: #929292;
+}
+
+.text-sm {
+  font-size: 0.9em;
+}
+
+.btn-trans {
+  background-color: transparent;
+  border-color: transparent;
+  color: #929292;
+}
+
+.btn-icon {
+  padding-left: 9px;
+  padding-right: 9px;
+}
+
+.btn-sm,
+.btn-group-sm > .btn,
+.btn-icon.btn-sm {
+  padding: 5px 10px !important;
+}
+
+.mar-top {
+  margin-top: 15px;
+}
+
+.comment-username{
+
+  color: #00095E;
+  font-weight:500;
+}
+
+.add-comment{
+  text-align: end;
+  margin-top: -15px;
+}
+.add-comment-section{
+  margin-right: 40px;
+}
+.task-images-card{
+  margin-right: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: none;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+
+.task-comment {
+  display: flex;
+}
+.media-body {
+  margin-top: 12px;
+  margin-left: 10px;
+}
+.text-button {
+  background: none;
+  box-shadow: none;
+  text-transform: none;
+  color: #facc15;
+}
+.add-photo-alternate{
+  font-size: 18px;
+}
+.delete-button {
+  margin-left: auto !important;
+}
+
+
+
+
+
+
+.task-alignment {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.description {
+  flex-grow: 1;
+}
+
+.estimation-priority {
+  margin-right: 10px;
+  margin-top:-20px
+
+}
+.comment-date{
+  margin-top:-10px
+}
+.comment-text{
+  margin-top:-5px
+
+}
+
+
+.close-button {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin-bottom: 10px;
+  color: #00095E;
+}
+.delete-button-color{
+  color: #facc15;
+}

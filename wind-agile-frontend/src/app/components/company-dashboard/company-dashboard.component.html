@@ -1,0 +1,95 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 col-sm-6 ">
+      <mat-card class="cardWithShadow employee-card">
+        <mat-card-content class="p-24">
+          <i class="users-icon d-flex align-items-center justify-content-center material-icons  ">people</i>
+
+          <mat-card-title class="all-users">Total Personnels</mat-card-title>
+
+          <div class="d-flex align-items-center justify-content-center"> <!-- Ajoutez les classes align-items-center et justify-content-center pour le centrage -->
+            <h4 class="users-count mat-headline-5">{{ totalUsersCount }}</h4>
+          </div>
+
+          <div id="chart" class="d-flex justify-content-center"> <!-- Ajoutez la classe justify-content-center pour centrer le contenu -->
+            <apx-chart
+              [series]="userChart.series"
+              [chart]="userChart.chart"
+              [labels]="userChart.labels"
+              [fill]="userChart.fill"
+              [legend]="userChart.legend"
+              [dataLabels]="userChart.dataLabels"
+              [colors]="userChart.colors"
+              [legend]="{ position: 'bottom' }"
+            ></apx-chart>
+          </div>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="col-lg-6 col-sm-6">
+      <mat-card class="cardWithShadow team-card">
+        <mat-card-content class="p-24">
+          <i class="users-icon d-flex align-items-center justify-content-center fa fa-users member-icon"></i>
+
+          <mat-card-title class="all-users">Total Équipes</mat-card-title>
+          <div class="d-flex align-items-center justify-content-center">
+            <h4 class="users-count mat-headline-5">{{ activeTeamsCount}}</h4>
+          </div>
+          <div id="chart" class="d-flex justify-content-center">
+            <div *ngIf="teamChartOptions">
+              <apx-chart
+                [series]="teamChartOptions.series"
+                [chart]="teamChartOptions.chart"
+                [dataLabels]="teamChartOptions.dataLabels"
+                [plotOptions]="teamChartOptions.plotOptions"
+                [xaxis]="teamChartOptions.xaxis"
+                [colors]="teamChartOptions.colors"
+
+              ></apx-chart>
+            </div>
+
+          </div>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <mat-card class="cardWithShadow project-card">
+        <mat-card-content class="p-24" style="text-align: center;">
+          <div>
+            <i class="users-icon material-icons  mr-2">work</i>
+
+            <mat-card-title class="all-users">Total Projets</mat-card-title>
+            <div class="users-icon d-flex align-items-center justify-content-center">
+              <h4 class="users-count mat-headline-5">{{ getTotalProjectsCount() }}</h4>
+            </div>
+            <div class="progress mt-4">
+              <div class="progress-bar bg-success" role="progressbar" [style.width.%]="getCompletionPercentage()"></div>
+            </div>
+          <!-- <div class="mt-2 text-muted ">{{ getCompletionPercentage() }}% completion</div>-->
+            <div class="mt-4 chart-container" style="max-width: 100%; margin: 0 auto;">
+              <apx-chart
+                [series]="projectChart.series"
+                [chart]="projectChart.chart"
+                [colors]="projectChart.colors"
+                [labels]="['IN_PROGRESS', 'COMPLETED', 'ON_HOLD', 'CANCELED']"
+                [legend]="{ position: 'bottom' }"
+              ></apx-chart>
+            </div>
+
+
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+

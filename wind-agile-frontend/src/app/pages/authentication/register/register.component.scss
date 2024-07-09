@@ -1,0 +1,175 @@
+.center-container {
+  display: flex;
+  justify-content: center;
+}
+
+.center-container a {
+  display: inline-block;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-top: -20px;
+  margin-bottom: 20px;
+}
+
+.logo-position {
+  display: flex;
+  align-items: center;
+}
+
+.blank-layout-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 102vh;
+  background: linear-gradient(90deg, #ffff 10%, #ffff 30%, #00095e 90%, #00095e 100%, #000427 100%);
+}
+
+.position-relative {
+  position: relative;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-lg-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.image-wrapper {
+  margin-top: 20px;
+}
+
+.image {
+  width: 100%;
+  height: 540px;
+  max-width: 900px;
+}
+
+.form-login-card {
+  width: 100%;
+}
+
+.boxed-auth {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.p-32 {
+  padding: 32px;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-top: -20px;
+  margin-bottom: 20px;
+}
+
+.logo-position {
+  display: flex;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-label {
+  color: #00095e;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.form-group {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.form-group:last-child {
+  margin-right: 0;
+}
+
+button {
+  margin-top: 20px;
+}
+
+.error-message {
+  color: #00095e;
+  font-weight: bold;
+  margin-top: 10px;
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.form-container {
+  margin-top: 5%;
+}
+
+.custom-label {
+  color: #00095e;
+}
+
+@media (max-width: 600px) {
+  .blank-layout-container {
+    background: none;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .col-lg-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .image {
+    height: auto;
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .form-login-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .p-32 {
+    padding: 16px;
+  }
+}
+mat-error{
+font-weight: bold;}

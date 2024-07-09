@@ -1,0 +1,70 @@
+<ejs-gantt id="ganttDefault" height="430px"
+  [dataSource]="data"
+  [taskFields]="taskSettings"
+  [timelineSettings]="timelineSettings"
+  [labelSettings]="labelSettings"
+  [showOverAllocation]="true"
+  [enableMultiTaskbar]="true"
+  [allowSelection]="true"
+  [rowHeight]="rowHeight"
+  [taskbarHeight]="taskbarHeight">
+
+  <e-columns>
+    <e-column field="name" headerText="Task Name" width="250"></e-column>
+    <e-column field="state" headerText="State" width="100" [template]="stateTemplate"></e-column>
+    <e-column field="profileImageUrl" headerText="Assigned User" width="100" [template]="profileImageTemplate"></e-column>
+    <e-column field="startDate" headerText="Start Date" width="100" format="yMd"></e-column>
+    <e-column field="estimation" headerText="Estimation" width="100" [template]="estimationTemplate"></e-column>
+    <e-column field="priority" headerText="Priority" width="100" [template]="priorityTemplate"></e-column>
+  </e-columns>
+
+  <ng-template #taskbarTemplate let-task>
+    <div class="custom-taskbar" [ngStyle]="{ 'background-color': getTaskbarColor(task.state), 'position': 'relative' }">
+      <div class="task-name" style="position: absolute; top: 50%; transform: translateY(-50%); left: 5px;">
+        {{ task.name }}
+      </div>
+    </div>
+  </ng-template>
+</ejs-gantt>
+
+<ng-template #stateTemplate let-task>
+  <div class="d-flex align-items-center">
+    <div *ngIf="task.state" class="todo-status" [ngStyle]="{
+      'background-color': task.state === 'ON_HOLD' ? '#facc15' :
+                          task.state === 'IN_PROGRESS' ? '#86B6F6' :
+                          task.state === 'CANCELED' ? '#FA7070' :
+                          task.state === 'COMPLETED' ? '#A1EEBD' : 'transparent'
+    }">
+      {{ taskStateTranslations[task.state] }}
+      <ng-container *ngIf="task.state === 'ON_HOLD'">
+        <i class="state-icon fas fa-hourglass-half"></i>
+      </ng-container>
+      <ng-container *ngIf="task.state === 'IN_PROGRESS'">
+        <i class="state-icon fas fa-hourglass-half"></i>
+      </ng-container>
+      <ng-container *ngIf="task.state === 'CANCELED'">
+        <i class="state-icon fas fa-times-circle"></i>
+      </ng-container>
+      <ng-container *ngIf="task.state === 'COMPLETED'">
+        <i class="state-icon fas fa-check-circle"></i>
+      </ng-container>
+    </div>
+
+  </div>
+</ng-template>
+
+<ng-template #profileImageTemplate let-task>
+  <div class="d-flex align-items-center">
+    <img [src]="task.profileImageUrl" alt="User Image" class="avatar" *ngIf="task.profileImageUrl">
+    <div class="ml-2">
+      <div >{{ task.firstname }} {{ task.lastname }}</div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #estimationTemplate let-task>
+  {{ task.estimation }} jours
+</ng-template>
+<ng-template #priorityTemplate let-task>
+  {{ taskPriorityTranslations[task.priority] }}
+</ng-template>

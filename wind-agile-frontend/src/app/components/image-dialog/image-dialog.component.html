@@ -1,0 +1,24 @@
+<div class="upload-page">
+<div class="file-upload" (click)="openFileChooser()">
+  <i class="fas fa-cloud-upload-alt upload-icon"></i>
+  <h3>Cliquer ici pour télécharger des images pour cette tache </h3>
+  <p>taille maximale est 20MB </p>
+  <input type="file" #fileInput accept="image/*" multiple style="display: none;" [multiple]="true" (change)="onFileSelected($event)">
+
+
+  <div class="selected-images">
+    <div *ngFor="let image of selectedImages; let i = index" class="selected-image">
+      <button mat-icon-button class="cancel-button" (click)="cancelImage(i)">
+        <mat-icon>cancel</mat-icon>
+      </button>
+      <img [src]="image" alt="Selected Image">
+    </div>
+  </div>
+
+</div>
+<mat-dialog-actions align="center">
+  <button mat-button (click)="closeDialog()">Annuler</button>
+  <button mat-button color="primary" (click)="confirmUpload()">Confirmer</button>
+</mat-dialog-actions>
+
+</div>

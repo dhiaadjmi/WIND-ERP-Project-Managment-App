@@ -1,0 +1,179 @@
+<div class="button-add-project" >
+
+  <div class="button-add-backlog text-center" *ngIf="!backlogId" >
+    <button *ngIf="userRole !== 'EMPLOYEE'" class="add-backlog-button" mat-flat-button color="primary" matTooltip="Info about the action" (click)="openAddBacklogDialog()">
+      Ajouter un backlog <i class="fa fa-plus"></i>
+    </button>
+
+  </div>
+
+
+  </div>
+  <div class="backlog-section">
+  <mat-card >
+  <div class="backlog" *ngIf="backlog">
+  <div>
+    <mat-card-title class="backlog-header">{{ backlog.name }}</mat-card-title>
+    <mat-card-content class="b-t-1">
+      <p class="todo-description text-center" style="color: #00095E;"> <b> <i class="description-icon fas fa-align-left "></i> Description:</b>
+    {{ backlog.description }}</p>
+    </mat-card-content>
+  </div>
+
+  <div class="backlog--button-group d-flex align-items-center justify-content-center">
+    <mat-icon matTooltip="Modifier" class="action-icon" *ngIf="userRole !== 'EMPLOYEE'"  (click)="openUpdateBacklogDialog()">autorenew</mat-icon>
+  </div>
+
+
+  <mat-card-content class="b-t-1">
+    <div class="button-add-backlog text-center" >
+      <button class="add-backlog-button" mat-flat-button color="primary" matTooltip="Info about the action" (click)="openAddTaskDialog()" *ngIf="backlogId && userRole !== 'EMPLOYEE'">
+        Ajouter une tâche <i class="fa fa-plus"></i>
+      </button>
+
+    </div>
+  </mat-card-content>
+
+  <div class="backlog-tasks">
+    <mat-card class="backlog-container" *ngFor="let task of tasks">
+      <div class="backlog-tasks-list">
+        <div class="row">
+          <div class="col-8">
+            <div class="todo-content" [ngClass]="{
+              'border-yellow': task.state === 'ON_HOLD',
+              'border-blue': task.state === 'IN_PROGRESS',
+              'border-red': task.state === 'CANCELED',
+              'border-green': task.state === 'COMPLETED'
+            }">
+              <div class="d-flex align-items-center justify-content-between">
+                <b class="task-name"><h4>{{ task.name }}</h4></b>
+              </div>
+            </div>
+          </div>
+          <div class="col-2 d-flex align-items-center justify-content-center">
+            <div *ngIf="task.state" class="todo-status" [ngStyle]="{
+              'background-color': task.state === 'ON_HOLD' ? '#facc15' :
+              task.state === 'IN_PROGRESS' ? '#86B6F6' :
+              task.state === 'CANCELED' ? '#FA7070' :
+              task.state === 'COMPLETED' ? '#A1EEBD' : 'transparent'
+            }">
+              {{ taskStateTranslations[task.state] }}
+              <ng-container *ngIf="task.state === 'ON_HOLD'">
+                <i class="state-icon fas fa-clock"></i>
+              </ng-container>
+              <ng-container *ngIf="task.state === 'IN_PROGRESS'">
+                <i class="state-icon fas fa-hourglass-half"></i>
+              </ng-container>
+              <ng-container *ngIf="task.state === 'CANCELED'">
+                <i class="state-icon fas fa-times-circle"></i>
+              </ng-container>
+              <ng-container *ngIf="task.state === 'COMPLETED'">
+                <i class="state-icon fas fa-check-circle"></i>
+              </ng-container>
+            </div>
+          </div>
+
+          <div class="col-2 d-flex align-items-center justify-content-center">
+            <div class=" backlog-actions  d-flex justify-content-end">
+              <div class="backlog--button-group d-flex align-items-center justify-content-center">
+                <mat-icon matTooltip="Options" class="action-icon" [matMenuTriggerFor]="taskMenu">more_vert</mat-icon>
+              </div>
+
+              <mat-menu #taskMenu="matMenu">
+
+                <button mat-menu-item *ngIf="userRole !== 'EMPLOYEE'" (click)="openUpdateTaskDialog(task.id)">
+                  <mat-icon class="icons-menu">autorenew</mat-icon>
+                  <span class="actions-menu">Modifier la tache</span>
+                </button>
+                <button mat-menu-item (click)="openTaskDetails(task.id)">
+                  <mat-icon class="icons-menu">zoom_out_map</mat-icon>
+                  <span class="actions-menu">voir la tache</span>
+                </button>
+                <button mat-menu-item *ngIf="userRole !== 'EMPLOYEE'" (click)="onDeleteTask(task.id)">
+                  <mat-icon class="icons-menu">delete</mat-icon>
+                  <span class="actions-menu">Supprimer la tache </span>
+                </button>
+                <button mat-menu-item *ngIf="userRole !== 'EMPLOYEE' && task.sprints?.length === 1" [matMenuTriggerFor]="sprintMenu" (click)="associateToSprint(task.id, selectedSprintId)">
+                  <mat-icon class="icons-menu">publish</mat-icon>
+                  <span class="actions-menu" >Associé à un sprint</span>
+                  <mat-menu #sprintMenu="matMenu">
+                    <div class="sprint-menu-text">Sélectionner un sprint</div>
+                    <div *ngFor="let sprint of sprints">
+                      <button *ngIf="!sprint.defaultSprint" mat-menu-item (click)="$event.stopPropagation(); selectSprint(sprint.id, task.id)">
+                        <div class="selected-sprint">
+                          <div class="sprint-name" [ngClass]="{'selected': sprint.selected}">{{ sprint.name }}</div>
+                          <span *ngIf="sprint.state" class="sprint-state" [ngStyle]="{
+                            'background-color': sprint.state === 'ON_HOLD' ? '#facc15' :
+                                                sprint.state === 'IN_PROGRESS' ? '#86B6F6' :
+                                                sprint.state === 'REPORTED' ? '#FA7070' :
+                                                sprint.state === 'COMPLETED' ? '#A1EEBD' : 'transparent'
+                          }">{{ sprintStateTranslations[sprint.state] }}</span>
+                        </div>
+                      </button>
+                    </div>
+
+                    <div class="buttongroup">
+                      <button class="association-button" mat-flat-button style=" background-color:#00095E" matTooltip="Valider l'association" (click)="associateToSprint(task.id, selectedSprintId)">
+                        <i class="fas fa-check" style="color: #fefefe;"></i>
+                      </button>
+                      <button class="close-button" mat-flat-button color="primary" matTooltip="Annuler">
+                        <i class="fas fa-times" style="color: #fefefe;"></i>
+                      </button>
+                    </div>
+                  </mat-menu>
+                </button>
+
+                <button mat-menu-item *ngIf="userRole !== 'EMPLOYEE' && !task.userId" [matMenuTriggerFor]="userMenu" (click)="associateToUser(task.id, selectedUserId)">
+                  <mat-icon class="icons-menu">person_add</mat-icon>
+                  <span class="actions-menu">Associer à un utilisateur</span>
+                  <mat-menu #userMenu="matMenu">
+                    <div class="sprint-menu-text">Sélectionner un utilisateur</div>
+                    <div *ngFor="let user of teamInfo.users" class="same-line">
+                      <button mat-menu-item (click)="$event.stopPropagation(); selectUser(user.id)">
+                        <div class="user-info">
+                          <img [src]="user.profileImageUrl" alt="User Avatar" class="user-icon-selection rounded-circle object-cover mr-2" width="35" height="35">
+                          <span class="username">{{ user.firstname }} {{ user.lastname }}</span>
+                        </div>
+                      </button>
+                    </div>
+                    <div class="buttongroup">
+                      <button class="association-button" mat-flat-button style=" background-color:#00095E" matTooltip="Valider l'association" (click)="associateToUser(task.id, selectedUserId)">
+                        <i class="fas fa-check" style="color: #fefefe;"></i>
+                      </button>
+                      <button class="close-button" mat-flat-button color="primary" matTooltip="Annuler">
+                        <i class="fas fa-times" style="color: #fefefe;"></i>
+                      </button>
+                    </div>
+                  </mat-menu>
+                </button>
+
+
+
+
+
+              </mat-menu>
+
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </mat-card>
+
+  </div>
+
+
+
+
+</div>
+</mat-card>
+</div>
+
+
+
+

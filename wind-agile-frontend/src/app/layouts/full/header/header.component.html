@@ -1,0 +1,77 @@
+<mat-toolbar class="topbar">
+  <!-- Mobile Menu -->
+  <button mat-icon-button (click)="toggleMobileNav.emit()" *ngIf="!showToggle">
+    <i-tabler name="menu-2" class="icon-20 d-flex"></i-tabler>
+  </button>
+  <!-- --------------------------------------------------------------- -->
+
+  <!-- --------------------------------------------------------------- -->
+  <!-- Notification Dropdown -->
+  <!-- --------------------------------------------------------------- -->
+ <!--
+  <button mat-icon-button aria-label="Notifications">
+    <i-tabler
+      class="d-flex"
+      name="bell"
+      matBadge="1"
+      matBadgeColor="primary"
+    ></i-tabler>
+  </button>
+-->
+  <span class="flex-1-auto"></span>
+
+  <!-- --------------------------------------------------------------- -->
+  <!-- profile Dropdown -->
+  <!-- --------------------------------------------------------------- -->
+
+  <button
+    mat-icon-button
+    [matMenuTriggerFor]="profilemenu"
+    aria-label="Notifications"
+  >
+
+    <img *ngIf="profileImageUrl" [src]="profileImageUrl" class="rounded-circle object-cover " width="45" height="45"   style="  border: 1px solid #FACC15;" />
+  </button>
+
+  <mat-menu #profilemenu="matMenu" class="topbar-dd cardWithShadow">
+    <hr  style="border-color: #00095E;background-color: #00095E;">
+
+    <img *ngIf="profileImageUrl" [src]="profileImageUrl" class="rounded-circle object-cover" width="80" height="80" style="display: block; margin-left: auto; margin-right: auto; margin-top: 10px; border: 3px solid #FACC15;margin-bottom: 10px;" />
+    <div *ngIf="showUsername && (username || companyName)  && userRole !== 'ADMIN'" class=" text-center" style="font-weight: bold; margin-bottom: 10px ;color: #00095E;">
+      {{ (userRole === 'COMPANY' ? companyName : username) | uppercase }}
+    </div>
+
+    <div *ngIf="userRole === 'ADMIN'"  class="text-center" style="font-weight: bold; margin-bottom: 10px ;color: #00095E; margin-top: 20px;">
+     ADMIN1
+    </div>
+    <hr  style="border-color: #00095E;background-color: #00095E;">
+
+    <ng-container *ngIf="userRole !== 'ADMIN'">
+      <button mat-menu-item (click)="redirectToProfile()" style="color: #00095E;" onmouseover="this.style.color='#FACC15';" onmouseout="this.style.color='#00095E';">
+        <mat-icon class="d-flex align-items-center" style="color: inherit;"><i-tabler name="user" class="icon-18 d-flex"></i-tabler></mat-icon>
+        <span>Mon Profil</span>
+      </button>
+
+    </ng-container>
+
+
+    <button mat-menu-item [routerLink]="['/component/changepassword']" style="color: #00095E;" onmouseover="this.style.color='#FACC15';" onmouseout="this.style.color='#00095E';">
+      <mat-icon class="d-flex align-items-center" style="color: inherit;"><i-tabler name="lock" class="icon-18 d-flex"></i-tabler></mat-icon>
+      <span>Changer Mots de passe</span>
+    </button>
+
+
+
+
+
+    <div class="p-x-12 m-t-12">
+      <a
+        [routerLink]="['/authentication/login']"
+        mat-stroked-button
+        color="primary"
+        class="w-100"
+        (click)="logout()"
+      >Logout</a>
+    </div>
+  </mat-menu>
+</mat-toolbar>

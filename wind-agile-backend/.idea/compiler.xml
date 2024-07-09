@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="discovey" />
+        <module name="config-server" />
+        <module name="gateway" />
+      </profile>
+      <profile name="Annotation profile for authentication" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.6.0.Beta1/mapstruct-processor-1.6.0.Beta1.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.6.0.Beta1/mapstruct-1.6.0.Beta1.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok-mapstruct-binding/0.2.0/lombok-mapstruct-binding-0.2.0.jar" />
+        </processorPath>
+        <module name="authentication" />
+        <module name="agileProjectManagment" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="projectManagment" target="17" />
+      <module name="school" target="17" />
+      <module name="student" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="agileProjectManagment" options="-parameters" />
+      <module name="authentication" options="-parameters" />
+      <module name="config-server" options="-parameters" />
+      <module name="discovey" options="-parameters" />
+      <module name="gateway" options="-parameters" />
+      <module name="projectManagment" options="-parameters" />
+      <module name="school" options="-parameters" />
+      <module name="student" options="-parameters" />
+    </option>
+  </component>
+</project>

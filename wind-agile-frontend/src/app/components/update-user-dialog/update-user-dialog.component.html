@@ -1,0 +1,68 @@
+<h2 mat-dialog-title class="update-user-title">Mettre à jour l'utilisateur</h2>
+<div mat-dialog-content>
+  <div class="form-row">
+    <div class="form-column">
+      <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Prénom</mat-label>
+      <mat-form-field appearance="outline" class="w-100" color="primary">
+        <input matInput placeholder="Prénom" [(ngModel)]="data.firstname" required />
+      </mat-form-field>
+    </div>
+
+    <div class="form-column">
+      <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Nom de famille</mat-label>
+      <mat-form-field appearance="outline" class="w-100" color="primary">
+        <input matInput placeholder="Nom de famille" [(ngModel)]="data.lastname" required />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-column">
+      <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Adresse e-mail</mat-label>
+      <mat-form-field appearance="outline" class="w-100" color="primary">
+        <input matInput placeholder="Adresse e-mail" [(ngModel)]="data.email" required />
+      </mat-form-field>
+    </div>
+
+    <div class="form-column">
+      <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Emploi</mat-label>
+      <mat-form-field appearance="outline" class="w-100" color="primary">
+        <input matInput placeholder="Emploi" [(ngModel)]="data.job" required />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-column">
+      <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Numéro de téléphone</mat-label>
+      <mat-form-field appearance="outline" class="w-100" color="primary">
+        <input matInput placeholder="Numéro de téléphone" [(ngModel)]="data.phoneNumber" required />
+      </mat-form-field>
+    </div>
+
+    <div class="form-column">
+      <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Numéro d'identité</mat-label>
+      <mat-form-field appearance="outline" class="w-100" color="primary">
+        <input matInput placeholder="Numéro d'identité" [(ngModel)]="data.cin" required />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-column col-md-6">
+      <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Rôle</mat-label>
+      <mat-form-field appearance="outline" class="w-100" color="primary">
+        <mat-select name="role" [(ngModel)]="data.role" required>
+          <mat-option value="LEADER">LEADER</mat-option>
+          <mat-option value="EMPLOYEE">EMPLOYEE</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+
+<div mat-dialog-actions class="centered-buttons">
+  <button mat-button color="primary" (click)="onUpdateClick()">Mettre à jour</button>
+
+  <button mat-button class="annuler" (click)="onNoClick()">Annuler</button>
+</div>

@@ -1,0 +1,47 @@
+
+
+.employee-card,
+.team-card,
+.project-card {
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.employee-card:hover,
+.team-card:hover,
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+
+@media screen and (min-width: 768px) {
+  .project-card {
+    max-width: unset;
+  }
+}
+
+@media screen and (min-width: 2px) {
+  .project-card {
+    max-width: unset;
+  }
+
+
+}
+.all-users{
+  text-align: center;
+  color: #00095E;
+}
+.users-icon{
+  color: #00095E;
+  font-size: 26px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+}
+.users-count{
+  color: #facc15;
+  font-size: 26px;
+  margin-top: 5px;
+  //margin-bottom: 5px;
+
+}

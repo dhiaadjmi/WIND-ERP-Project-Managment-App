@@ -1,0 +1,69 @@
+<div class="spinner-container" *ngIf="showSpinner">
+  <mat-spinner diameter="100" class="m-3"></mat-spinner>
+</div>
+
+<mat-card class="cardWithShadow boxed-auth">
+  <mat-card-title class="add-company-title"> Ajouter une nouvelle Entreprise</mat-card-title>
+  <mat-card-content class="p-32 d-flex justify-content-center align-items-center">
+    <form class="m-t-30" #addCompanyForm="ngForm" style="width: 100%;">
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Email</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input matInput name="email" [(ngModel)]="email" placeholder="Email" required email />
+            <mat-error *ngIf="addCompanyForm.controls['email'].errors?.['required']">
+              Ce champ est requis
+            </mat-error>
+            <mat-error *ngIf="addCompanyForm.controls['email'].errors?.['email']">
+              Veuillez entrer un e-mail valide
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Nom de l'entreprise</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input matInput name="companyName" [(ngModel)]="companyName" placeholder="Nom de l'entreprise" required />
+            <mat-error *ngIf="addCompanyForm.controls['companyName'].errors?.['required']">
+              Ce champ est requis
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Secteur</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input matInput name="sector" [(ngModel)]="sector" placeholder="Secteurr" required />
+            <mat-error *ngIf="addCompanyForm.controls['sector'].errors?.['required']">
+              Ce champ est requis
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-6">
+          <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">taile de l'entreprise</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input matInput name="size" [(ngModel)]="size" placeholder="taile de l'entreprise" type="number" min="1" required />
+            <mat-error *ngIf="addCompanyForm.controls['size'].errors?.['required']">
+              Ce champ est requis
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Numéro de téléphone</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input matInput name="phoneNumber" [(ngModel)]="phoneNumber" placeholder="Numéro de téléphone" required />
+            <mat-error *ngIf="addCompanyForm.controls['phoneNumber'].errors?.['required']">
+              Ce champ est requis
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <button mat-flat-button color="primary" class="w-100" (click)="addCompany()" [disabled]="!addCompanyForm.form.valid">Add Company</button>
+    </form>
+  </mat-card-content>
+</mat-card>

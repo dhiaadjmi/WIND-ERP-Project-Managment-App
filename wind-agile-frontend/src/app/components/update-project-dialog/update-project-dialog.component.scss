@@ -1,0 +1,41 @@
+.update-project-title {
+  text-align: center;
+  color: #facc15;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+
+.centered-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.centered-buttons button.mat-button {
+  margin: 0 8px;
+}
+mat-label{
+  color:#00095E ;
+}
+.annuler{
+  color:#00095E ;
+
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.form-column {
+  flex-basis: calc(50% - 10px);
+  margin-bottom: 20px;
+}
+
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}

@@ -1,0 +1,43 @@
+.add-user-title {
+  text-align: center;
+  color: #facc15;
+  padding-top: 20px;
+}
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form-column {
+  flex-basis: calc(50% - 20px);
+  margin-right: 20px;
+}
+
+@media screen and (max-width: 767px) {
+  .form-column {
+    flex-basis: calc(100% - 20px);
+    margin-right: 0;
+  }
+
+  .form-column:nth-child(odd) {
+    margin-right: 20px;
+  }
+
+  .form-column:nth-child(even) {
+    margin-left: 20px;
+  }
+}
+.dialog-inputs{
+  color:#00095E ;
+}
+.spinner-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 120%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}

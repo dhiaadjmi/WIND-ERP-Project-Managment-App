@@ -1,0 +1,178 @@
+<div class="row">
+  <div cdkDropListGroup>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="example-container border-yellow">
+          <mat-card>
+
+          <h4 style="text-align: center;color: #00095E;" >En attente<span *ngIf="tasks.length > 0">{{getTasksByState('ON_HOLD').length}}</span></h4>
+          <div cdkDropList id="onHoldColumn" [cdkDropListData]="getTasksByState('ON_HOLD')" class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box " *ngFor="let item of getTasksByState('ON_HOLD'); let i = index" cdkDrag [attr.data-task-id]="item.id">
+              <div class="vertical-bar-ON_HOLD">
+
+              <div class="task-info">
+
+                <div class="label1" >{{ item.name }}</div>
+               <br> <div class="item2"><i class="desciption-icon icon fas fa-align-left"></i> {{ item.description }}</div>
+                <span style="color: #00095E;"><i class="fa fa-calendar" aria-hidden="true"></i></span> &nbsp;&nbsp;{{ item.startDate | date: 'shortDate' }}<br>
+                <span style="color: #facc15;"><i class="fa fa-clock-o" aria-hidden="true"></i></span>&nbsp;&nbsp; {{ item.estimation }} jours<br>
+                <span style="color: #00095E;"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></span>&nbsp;&nbsp;  {{ item.priority }}
+
+              </div>
+
+
+
+
+
+              <div class="d-flex justify-content-between">
+                <div class="user-info-container">
+                  <div class="user-informations" *ngIf="usersInfo[item.userId]"  (click)="openUserDetails(item.userId)">
+                      <img [src]="usersInfo[item.userId].profileImageUrl"  alt="User Avatar" class="rounded-circle object-cover mb-2" width="45" height="45" >
+                  </div>
+              </div>
+                <div class="tasks-actions">
+                  <mat-icon matTooltip="voir la tache" class="action-icon" (click)="openTaskDetails(item.id)">zoom_out_map</mat-icon>
+
+                    <mat-icon matTooltip="Modifier" class="action-icon" *ngIf="userRole !== 'EMPLOYEE'" (click)="openUpdateTaskDialog(item.id)">autorenew</mat-icon>
+                    <mat-icon matTooltip="Supprimer" class="action-icon" *ngIf="userRole !== 'EMPLOYEE'" (click)="onDeleteTask(item.id)" >delete</mat-icon>
+                </div>
+
+            </div>
+            </div>
+            </div>
+            <button mat-icon-button color="primary" class="add-button" *ngIf="userRole !== 'EMPLOYEE'" (click)="openAddTaskDialog()" >
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+        </mat-card>
+
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="example-container border-blue">
+          <mat-card>
+                 <h4 style="text-align: center;color: #00095E;">En cours <span *ngIf="getTasksByState('IN_PROGRESS').length > 0">{{getTasksByState('IN_PROGRESS').length}}</span></h4>
+                 <div cdkDropList id="inProgressColumn" [cdkDropListData]="getTasksByState('IN_PROGRESS')" class="example-list" (cdkDropListDropped)="drop($event)">
+                  <div class="example-box " *ngFor="let item of getTasksByState('IN_PROGRESS'); let i = index" cdkDrag [attr.data-task-id]="item.id">
+              <div class="vertical-bar-IN_PROGRESS">
+
+              <div class="task-info">
+
+                <div class="label1" >{{ item.name }}</div><br>
+
+                <div class="item2"><i class="desciption-icon icon fas fa-align-left"></i> {{ item.description }}</div>
+                <span style="color: #00095E;"><i class="fa fa-calendar" aria-hidden="true"></i></span>&nbsp; {{ item.startDate | date: 'shortDate' }}<br>
+                <span style="color: #facc15;"><i class="fa fa-clock-o" aria-hidden="true"></i></span>&nbsp;&nbsp; {{ item.estimation }} jours<br>
+                <span style="color: #00095E;"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></span>&nbsp;&nbsp; {{ item.priority }}
+
+              </div>
+
+
+              <div class="d-flex justify-content-between">
+                <div class="user-info-container">
+                  <div class="user-informations" *ngIf="usersInfo[item.userId]"  (click)="openUserDetails(item.userId)">
+                      <img [src]="usersInfo[item.userId].profileImageUrl"  alt="User Avatar" class="rounded-circle object-cover mb-2"  height="45" width="45">
+                  </div>
+              </div>
+                <div class="tasks-actions">
+                  <mat-icon matTooltip="voir la tache" class="action-icon" (click)="openTaskDetails(item.id)">zoom_out_map</mat-icon>
+
+                    <mat-icon matTooltip="Modifier" class="action-icon" *ngIf="userRole !== 'EMPLOYEE'" (click)="openUpdateTaskDialog(item.id)">autorenew</mat-icon>
+                    <mat-icon matTooltip="Supprimer" class="action-icon" *ngIf="userRole !== 'EMPLOYEE'" (click)="onDeleteTask(item.id)" >delete</mat-icon>
+                </div>
+
+            </div>
+
+            </div>
+            </div>
+
+          </div>
+        </mat-card>
+        </div>
+        </div>
+      <div class="col-md-3">
+        <div class="example-container border-green" >
+          <mat-card>
+                       <h4 style="text-align: center;color: #00095E;">Terminée <span *ngIf="getTasksByState('COMPLETED').length > 0">{{getTasksByState('COMPLETED').length}}</span></h4>
+                       <div cdkDropList id="completedColumn" [cdkDropListData]="getTasksByState('COMPLETED')" class="example-list" (cdkDropListDropped)="drop($event)">
+                        <div class="example-box" *ngFor="let item of getTasksByState('COMPLETED'); let i = index"  cdkDrag [attr.data-task-id]="item.id">
+              <div class="vertical-bar-COMPLETED">
+
+              <div class="task-info">
+
+                <div class="label1" >{{ item.name }}</div><br>
+
+                <div class="item2"><i class="desciption-icon icon fas fa-align-left"></i> {{ item.description }}</div>
+                <span style="color: #00095E;"><i class="fa fa-calendar" aria-hidden="true"></i> </span>&nbsp;{{ item.startDate | date: 'shortDate' }}<br>
+                <span style="color: #facc15;"><i class="fa fa-clock-o" aria-hidden="true"></i></span>&nbsp;&nbsp; {{ item.estimation }} jours<br>
+                <span style="color: #00095E;"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></span>&nbsp;&nbsp;  {{ item.priority }}
+
+              </div>
+
+              <div class="d-flex justify-content-between">
+                <div class="user-info-container">
+                  <div class="user-informations" *ngIf="usersInfo[item.userId]"  (click)="openUserDetails(item.userId)">
+                      <img [src]="usersInfo[item.userId].profileImageUrl"  alt="User Avatar" class="rounded-circle object-cover mb-2"  height="45" width="45">
+                  </div>
+              </div>
+                <div class="tasks-actions">
+                  <mat-icon matTooltip="voir la tache" class="action-icon" (click)="openTaskDetails(item.id)">zoom_out_map</mat-icon>
+
+                    <mat-icon matTooltip="Modifier" class="action-icon" *ngIf="userRole !== 'EMPLOYEE'" (click)="openUpdateTaskDialog(item.id)">autorenew</mat-icon>
+                    <mat-icon matTooltip="Supprimer" class="action-icon" *ngIf="userRole !== 'EMPLOYEE'"(click)="onDeleteTask(item.id)"  >delete</mat-icon>
+                </div>
+
+            </div>
+            </div>
+          </div>
+
+
+          </div>
+        </mat-card>
+        </div>
+          </div>
+      <div class="col-md-3">
+        <div class="example-container border-red">
+          <mat-card>
+          <h4 style="text-align: center;color: #00095E;">Annulée <span *ngIf="getTasksByState('CANCELED').length > 0">{{getTasksByState('CANCELED').length}}</span></h4>
+          <div cdkDropList id="canceledColumn" [cdkDropListData]="getTasksByState('CANCELED')" class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box " *ngFor="let item of getTasksByState('CANCELED'); let i = index"  cdkDrag [attr.data-task-id]="item.id">
+              <div class="vertical-bar-CANCELED">
+ <div class="task-info">
+
+
+                <div class="label1" >{{ item.name }}</div><br>
+                <div class="item2"><i class="desciption-icon icon fas fa-align-left"></i> {{ item.description }}</div>
+                <span style="color: #00095E;"><i class="fa fa-calendar" aria-hidden="true"></i></span> &nbsp;&nbsp;{{ item.startDate | date: 'shortDate' }}<br>
+                <span style="color: #facc15;"><i class="fa fa-clock-o" aria-hidden="true"></i></span>&nbsp;&nbsp; {{ item.estimation }} jours<br>
+                <span style="color: #00095E;"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></span>&nbsp;&nbsp; {{ item.priority }}
+
+              </div>
+
+
+              <div class="d-flex justify-content-between">
+                <div class="user-info-container">
+                  <div class="user-informations" *ngIf="usersInfo[item.userId]"  (click)="openUserDetails(item.userId)">
+                      <img [src]="usersInfo[item.userId].profileImageUrl"  alt="User Avatar" class="rounded-circle object-cover mb-2" width="45" height="45" >
+                  </div>
+              </div>
+                <div class="tasks-actions">
+                  <mat-icon matTooltip="voir la tache" class="action-icon" (click)="openTaskDetails(item.id)">zoom_out_map</mat-icon>
+
+                    <mat-icon matTooltip="Modifier" class="action-icon" *ngIf="userRole !== 'EMPLOYEE'" (click)="openUpdateTaskDialog(item.id)">autorenew</mat-icon>
+
+                    <mat-icon matTooltip="Supprimer" class="action-icon" *ngIf="userRole !== 'EMPLOYEE'"(click)="onDeleteTask(item.id)"  >delete</mat-icon>
+                </div>
+
+            </div>
+
+            </div>
+          </div>
+
+          </div>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

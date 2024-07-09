@@ -1,0 +1,107 @@
+.project-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.detail {
+  display: flex;
+  align-items: center;
+}
+
+.detail-label {
+  width: 120px;
+  font-weight: bold;
+  color: #00095E;
+  font-size: 16px;
+}
+
+.todo-status {
+  background-color: #f7fafc;
+  color: #000;
+  font-size: 0.8rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+
+
+
+}
+
+.team-member {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.team-member img {
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.member-name {
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+.view-details-button {
+  margin-top: 20px;
+  align-self: center;
+}
+
+.line {
+  border-bottom: 2px solid #00095E;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.team-name {
+  font-size: 20px;
+  color: #00095E;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.larger-title {
+  font-size: 26px;
+  color: #00095E;
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+.team-icon {
+  margin-right: 10px;
+}
+.project-dates{
+  font-size: 16px;
+}
+
+.description-icon{
+  margin-right: 10px;
+  margin-left: 10px;
+  color: #00095E;
+
+}
+.state-icon{
+  margin-left: 5px;
+
+}
+
+.page-titles {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 50px;
+  background-color: #f9f9f9;
+  box-shadow: #00095E;
+  margin-bottom: 10px;
+}
+
+.page-title {
+  cursor: pointer;
+  padding: 10px 20px;
+  transition: all 0.3s ease;
+  color: #00095E;
+}

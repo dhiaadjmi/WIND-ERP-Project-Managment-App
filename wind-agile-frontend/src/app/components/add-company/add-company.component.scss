@@ -1,0 +1,28 @@
+.add-company-title {
+  text-align: center;
+  color: #facc15;
+  padding-top: 20px;
+}
+mat-label {
+  color: #00095E;
+}
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+mat-card{
+  min-width: 60%;
+}
+.spinner-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 120%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}

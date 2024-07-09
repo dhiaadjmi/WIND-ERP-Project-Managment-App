@@ -1,0 +1,43 @@
+  <div class="timeline-container">
+    <div>
+      <mat-card-title class="sprint-header"> Les sprints du projet</mat-card-title>
+
+    </div>
+  <div class="timeline"></div>
+
+  <mat-vertical-stepper>
+    <mat-step *ngFor="let sprint of sprints" [label]="sprint.sprintName">
+      <ng-template matStepLabel>
+        <div class="step-label">
+          <div><b>{{ sprint.sprintName }}</b></div>
+          <div class="state-icon"><i class="fas fa-info-circle"></i> {{ sprint.state }}</div>
+          <div class="end-date-icon"><i class="fas fa-calendar-alt"></i> {{ sprint.endDate }}</div>
+        </div>
+      </ng-template>
+
+      <div class="sprint-content" cdkDropList (cdkDropListDropped)="drop($event)">
+        <mat-card class="sprint-card" >
+
+        <mat-card class="left-card">
+          <mat-card-header>
+            <mat-card-title class="title-sprint">{{ sprint.sprintName }}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="b-t-1">
+            <p><strong class="sprint-elements">Objective:</strong> {{ sprint.objective }}</p>
+            <p><strong class="sprint-elements">Start Date:</strong> {{ sprint.startDate }}</p>
+            <p><strong class="sprint-elements">End Date:</strong> {{ sprint.endDate }}</p>
+            <p><strong class="sprint-elements">State:</strong> {{ sprint.state }}</p>
+            <p><strong class="sprint-elements">Priority:</strong> {{ sprint.priority }}</p>
+          </mat-card-content>
+        </mat-card>
+        <div class="tasks-container" cdkDropList [cdkDropListData]="sprint.tasks" (cdkDropListDropped)="onTaskDrop($event)">
+          <mat-card *ngFor="let task of sprint.tasks" cdkDrag>
+            <mat-card-title class="sprint-elements">{{ task.name }}</mat-card-title>
+          </mat-card>
+        </div>
+      </mat-card>
+
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
+</div>
